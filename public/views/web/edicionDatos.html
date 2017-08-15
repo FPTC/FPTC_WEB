@@ -1,0 +1,135 @@
+<md-dialog aria-label="" class="{{irAZona}}Borde" id="toast-container-edit" >
+<h2 style="text-align:center ;  font-size: 50px !important;">Ediciòn de perfil</h2>
+  
+ <div class="alert alert-warning" style="width:90%; margin-left:5%; text-align:center;">
+ 
+    <strong>Esta es la información que tienes registrada.</strong>
+  </div>
+  <md-dialog-content >
+  <div id="cuerpo" class="md-dialog-content" >
+    
+
+      <div layout="column" >
+        <md-content layout-padding>
+       
+
+        <form name="formularioForm">
+          
+
+       <md-content md-theme="formulario" >
+
+
+        <div class="formularioRegistro" style="width: 60%;
+         margin-left: 20%;">
+
+
+       
+
+
+          <md-input-container flex="100">
+          <label>Email </label>
+          <input type="email" required name="companyEmail" ng-model="formulario.envio.companyEmail" ng-pattern="/^.+@.+\..+$/" ng-change='validar()' >
+          <div ng-messages="formularioForm.companyEmail.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+            <div ng-message="pattern">Este campo debe ser un email.</div>
+          </div>
+          </md-input-container>
+
+          <md-input-container flex="100">
+          <label>Nombre completo</label>
+          <input type="text" required name="companyName" ng-model="formulario.envio.companyName" ng-change='validar()'>
+          <div ng-messages="formularioForm.companyName.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+
+       
+
+          <md-input-container flex="100">
+          <label>Telefono</label>
+          <input type="text" required name="companyName" ng-model="formulario.envio.companyName" ng-change='validar()'>
+          <div ng-messages="formularioForm.companyName.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+          <md-input-container flex="100">
+          <label>Edad</label>
+          <input type="number" required name="companyName" ng-model="formulario.envio.companyName" ng-change='validar()'>
+          <div ng-messages="formularioForm.companyName.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+
+            <md-input-container flex="100">
+          <label>Barrio / residencia</label>
+          <input type="text" required name="companyName" ng-model="formulario.envio.companyName" ng-change='validar()'>
+          <div ng-messages="formularioForm.companyName.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+              <md-input-container flex="100">
+          <label>Estatura (cm)</label>
+          <input type="number" required name="estatura" ng-model="formulario.envio.estatura" ng-change='validar()'>
+          <div ng-messages="formularioForm.estatura.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+
+            <md-input-container flex="100">
+          <label>Peso (cm)</label>
+          <input type="number" required name="peso" ng-model="formulario.envio.peso" ng-change='validar()'>
+          <div ng-messages="formularioForm.peso.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+<input type="date" required name="peso" ng-model="formulario.envio.peso" ng-change='validar()'>
+                   
+
+  
+
+                   
+
+             <md-input-container flex="100">
+          <label>¿Tienes relación alguna con el cancer?</label>
+          <input type="text" required name="companyName" ng-model="formulario.envio.companyName" ng-change='validar()'>
+          <div ng-messages="formularioForm.companyName.$error">
+            <div ng-message="required">Este campo es requerido.</div>
+          </div>
+          </md-input-container>
+
+
+         
+                
+    </form>
+         
+  </md-content>
+
+
+
+
+</div>
+
+
+</div>   
+
+</md-dialog-content>
+<md-dialog-actions layout="row">
+
+<span flex></span>
+
+<md-button ng-click="cerrar()"  class="{{ocultarCancel}}">
+Cancelar
+</md-button>
+
+<md-button  ng-click="enviar()"  ng-disabled="botonEnviar" >
+Guardar
+</md-button>
+</md-dialog-actions>
+
+</md-dialog>

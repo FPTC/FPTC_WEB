@@ -1,0 +1,179 @@
+
+<div class="titulo" >
+	<h1 ng-model="user" class="tituloPrincipal cervixPrimary visible fadeIn">Cáncer de Cuello Uterino</h1>
+</div>
+
+<section style="background-color:white;height:calc(100%); display: inherit ;  width: 100%;  min-width: 350px;" >
+
+	<div ng-model="displayForm" id="cierpoInicio" style="display: {{displayForm}};">
+
+		<div class="cuerpo" style="height: 100%;">
+
+			<div class="seccionCuerpo" style="height: 100%;">
+
+
+				<md-content md-theme="formulario" style=" background-color: white; overflow-x: hidden; height: 100%; display: grid; padding: 40px 0px 40px 0px">
+
+					<div class="cuerpoAplicacion" style="display:inline-block; width:80% !important	; margin:auto;">
+
+					<!-- 	<p class="visible" id="mensajePreguntas" style="margin-bottom: 40px; text-align: center; font-size: 1.4em;">
+								Responder correctamente este cuestionario te permitirá acceder a fabulosos premios, ya que valoramos tu cocimiento acerca del cancer de cervix.
+						</p> -->
+
+
+						<div id="cargandoPreguntas" class="noVisible">
+							<div class="contenedorProgress flagProgress" layout="row" layout-sm="column" layout-align="space-around">
+								<md-progress-circular md-warn="#db2763" md-accent="db2763" md-diameter="150">ss</md-progress-circular>
+
+								<!-- 	<img class="imagenProgress" class="visible imagenPregunta" src="../public/img/seno.png"> -->
+
+
+							</div>
+							<h3 style="text-align: center;">Cargando cuestionario...</h3>
+						</div>
+
+
+
+						<div style="width:100%; height: 300px; text-align: center; margin-bottom: 25px; margin-top:25px; display: inline-table;" id="marcoPremio" class="noVisible">
+
+							<h2 style="width:100%; max-width:500px; margin:auto;font-size: 42px;">¡Felicitaciones!</h2>
+
+
+							<h2 class="mensajeFelicitaciones">Puntos acumulados: {{puntosMostrar}}.</h2>
+
+							<i style="font-size: 200px;
+							width: 100%;     color: #009997 !important;" class="fa fa-gift visible  " aria-hidden="true"></i>
+							<h2 class="noVisible mensajeFelicitaciones"  id="infoPremio" >(Podrás hacer este test nuevamente en {{diferencia}} días)</h2>
+
+
+							<md-button  class="md-primary btnPrimaryCervix noVisible" ng-click="goPuntos();"  id="btnPuntos" style="width: 50%; max-width: 250px; "
+							ng-click=""> ir a Puntos </md-button>
+
+							<md-button  class="md-primary btnPrimaryCervix noVisible" id="btnTest" style="width: 50%; max-width: 250px; "
+							ng-click="goSeno()"> ir al Test de Seno </md-button>
+
+							
+
+						</div>
+
+
+						
+						<div id="marcoEdicion" style="width:100%; height: 300px; text-align: center;" class="noVisible">
+
+							<i style="font-size: 200px;
+							width: 100%;     color: #009997!important;" class="fa fa-user-times visible  " aria-hidden="true"></i>
+							<h2 class="visible" style="text-align: center; margin-top: 0px !important;">Para empezar el test, completa tu perfil por completo.</h2>
+							<md-button  class="md-primary btnPrimaryCervix visible" style="width: 50%; max-width: 200px; "
+							ng-click="goPerfil()"> Ir a perfil </md-button>
+
+
+
+						</div>
+
+
+						<div class="marcoPregunta noVisible" id="marcoPregunta"  style="  border: 1px solid gray;
+						border-top: 0px;
+						padding-bottom: 30px;">
+
+						<div style="width: 70px;
+						height: 70px;	
+						background: #009997;
+						float: right;
+						margin-right: -35px;
+						margin-top: -30px;
+						border-radius: 50%;">
+
+						<h1 style=" height: 70px;text-align: center;margin-top: 17px !important; color:white;">{{puntos}}</h1>
+						
+					</div>
+
+
+
+
+					<md-progress-linear style="width:calc(100% - 35px);" md-mode="determinate" class="cervixBar" value="{{porcentaje}}"></md-progress-linear>
+
+					<h1 ng-model="user" class="tituloPrincipal cervixPrimary visible " style="font-size: 39px !important; text-align: center; text-transform: initial !important;">Pregunta # {{((preguntas.actual)+1)}}</h1>
+
+					<h2 class="visible "  style="text-align: center;"> {{preguntas.valores[preguntas.actual].textoPregunta}}</h2>
+
+				<!-- 	<div style="width: 80%; margin-left: 10%; display: flex;" ng-show="preguntas.valores[preguntas.actual].cantidadRespuestas == 2" >
+
+						<div style="width: 50%; margin-left: 2.5%; margin-right: 2.5%;" class="animates" ng-repeat="opcion in preguntas.valores[preguntas.actual].respuesta track by $index">
+
+							<md-button ng-disabled="disabledRespuestas == true && idSeleccionada!=opcion.id && opcion.adicional==0"  class="md-primary  {{class[$index]}} {{correcta}}" style="width: 100%; text-transform: initial !important;"
+							ng-click="respuesta(opcion.id)">{{opcion.descripcion}} </md-button>
+
+						</div>
+
+					</div>
+ -->
+					<div style="width: 80%; margin-left: 10%;" >
+
+						<div style="width: 100%;" class="animates" ng-repeat="opcion in preguntas.valores[preguntas.actual].respuesta track by $index">
+
+								<md-button ng-disabled="disabledRespuestas == true && idSeleccionada!=opcion.id " md-ink-ripple="false" class="md-primary  {{class[$index]}} {{correcta}}" style="width: 100%; text-transform: initial !important;"
+							ng-click="respuesta(opcion.id)"
+							>{{opcion.descripcion}}  </md-button>
+
+						</div>
+
+					</div>
+
+
+					
+
+
+					<div class="{{visibleAdicionales}}" ng-if="preguntas.valores[preguntas.actual].respuesta[idSeleccionada].preguntaAdicional">
+
+
+						<h2 class="visible" style="text-align: center;"> {{preguntas.valores[preguntas.actual].respuesta[idSeleccionada].preguntaAdicional.text}}</h2>
+
+						
+
+						<div style="width: 80%; margin-left: 10%; " >
+
+
+							<div style="width: 100%;" class="animates" ng-repeat="opcion in preguntas.valores[preguntas.actual].respuesta[idSeleccionada].preguntaAdicional.respuesta track by $index">
+
+								<md-button  class="md-primary  {{class[$index]}}"  style="width: 100% !important;"
+								ng-click="respuestaCompuesta(opcion.id)"
+								>{{opcion.descripcion}}  </md-button>
+
+							</div>
+
+						</div>
+
+
+					</div>
+
+					<div style="" class="leyenda {{mostrarLeyenda}} {{correcta}}" >
+
+							<h2 class="textoLeyenda " ng-if="correcta=='Correcta'" style="padding: 10px;"> ¡Correcta!</h2>
+						<h2 class="textoLeyenda " ng-if="correcta=='Incorrecta'" style="padding: 10px;"> ¡Incorrecta!</h2>
+						<h2 class="textoLeyenda " ng-if="correcta=='Info'" style="padding: 10px;"> ¡Cuidado!</h2>
+						<h4 class="textoLeyenda " style="font-size: 20px !important;">{{preguntas.valores[preguntas.actual].info}}</h4>	
+
+					</div>
+
+					<md-button id="btnSiguiente" class="{{mostrarLeyenda}} md-primary  btnPrimaryCervix btnSiguiente" style=""
+					ng-click="seguir()"
+					>Siguiente </md-button>
+
+				</div>
+
+
+
+			</div>
+
+		</md-content>
+
+	</div>
+
+</div> 
+
+</div>  
+
+</section>
+<div class="foot" style="height: 45px; width: 100%; background-color: #ff6390; color: white;">
+	<p style="text-align: center;">Todos los derechos reservados | Ámate | 2017</p>
+</div>

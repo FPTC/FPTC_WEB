@@ -1,0 +1,78 @@
+
+
+<section style="background-color:white;height:calc(100vh); width: 100vw; display: inherit ;    min-width: 350px;" >
+
+	<div ng-model="displayForm" id="cierpoInicio" style="display: {{displayForm}};">
+
+
+
+		<div class="cuerpo" style="height: 100%;">
+
+			<div class="seccionCuerpo" style="height: 100%;background:  rgba(128, 128, 128, 0.05);">
+
+				<div class="loginMarco" style="padding-bottom: 20px;">
+
+					<div class="" style="" >
+						<img class="visible imagenLogoLogin" src="../public/img/logoAmateColor.png" >
+					</div>
+					<div class="formularioRegistro" style="    margin-left: 12.5% !important;
+					width: 75% !important;">
+					<md-input-container flex="100" class="col-sm-12 col-xl-12 col-md-12" style="margin-top: 45px !important;margin-bottom: 0px !important; width: 100vw;">
+					<label>Correo electronico</label>
+					<input type="text" required name="cliente" ng-model="formulario.envio.email">
+					<div ng-messages="formulario.nit.$error">
+						<div ng-message="required">Este campo es requerido.</div>
+					</div>
+				</md-input-container>
+
+				<md-input-container flex="100" class="col-sm-12 col-xl-12 col-md-12" style="margin-top: 0px !important; width: 100vw;">
+				<label>Contraseña</label>
+				<input type="password" required name="razon" ng-model="formulario.envio.password">
+				<div ng-messages="formulario.razon.$error">
+					<div ng-message="required">Este campo es requerido.</div>
+				</div>
+				<a ng-click="goRecuperar()" style="position: absolute;width: 100%; margin-top:20px; text-align: center;text-decoration: none;" href="../public/#/recuperar">¿Olvidaste tu contraseña?</a>
+			</md-input-container>			
+
+
+
+			<div style="">
+
+				<md-button ng-click="enviarDatosLogin()" class="md-raised md-primary primaryAmate" style="    text-transform: initial;    margin-bottom: 20px; width: 80%; margin-left:10%; " >Ingresar</md-button>
+
+				<div id="DIV_1" style="    margin: 0;
+				width: 100%;">
+				<div id="DIV_2">
+				</div>
+				<div id="DIV_3">
+					o
+				</div>
+				<div id="DIV_4">
+				</div>
+			</div>
+
+
+			<md-button ng-click="loginFacebook()" style="width: 80%; margin-left:10%;text-transform: initial;">
+			<i class="fa fa-facebook-official  middleIcon" style="min-width:0px !important;color:#365899;    " aria-hidden="true"></i> 
+			<span style="top: -3px !important;position: relative;">Iniciar sesión con Facebook</span>
+		</md-button>
+		<md-button class="darkAmate" ng-click="goRegistro()" style="width: 80%; margin-left:10%;text-transform: initial;">
+		<i class="fa fa-user-circle  middleIcon" style="min-width:0px !important;color:white;    " aria-hidden="true"></i> 
+		<span style="top: -3px !important;position: relative; margin-bottom: 30px;">Registrarse</span>
+	</md-button>
+
+
+</div>
+</div>
+
+</div>
+
+
+
+</div>
+
+</div> 
+
+</div>  
+
+</section>

@@ -1,0 +1,81 @@
+
+<div class="titulo" >
+	<h1 ng-model="user" class="tituloPrincipal visible fadeIn">Aprende sobre el cáncer</h1>
+</div>
+
+<section style="background-color:white;height:calc(100%); display: inherit;" >
+
+	<div ng-model="displayForm" id="cierpoInicio" style="display: {{displayForm}};">
+
+		<div class="cuerpo" style="height: 100%;">
+			
+			<div class="seccionCuerpo" style="height: 100%;">
+
+
+				<md-content md-theme="formulario" style=" background-color: white; overflow-x: hidden; height: 100%;">
+
+					<div class="cuerpoAplicacion" style="display:inline-block; width:100% !important	; margin-left:0px !important;">
+
+						<p class="visible" style="margin-bottom: 40px; text-align: center; font-size: 1.4em; padding:0px 40px;">Aprender sobre el cáncer de seno o de cuello uterino te permitirá vivir más y mejor.
+						</p>
+
+						<p class="visible" style="margin-bottom: 40px; text-align: center; font-size: 1.4em; padding:0px 40px;">
+							¡Selecciona el tipo de cáncer para poner a prueba tu conocimiento y empezar a aprender!
+						</p>
+
+						<div  class="tipoPregunta visible fadeIn col-md-6 col-sm-12 preguntasIzquierda" ng-click="goSeno()"  >
+
+							<div md-ink-ripple="#fb8eb0" style="height: 100%; position: relative;">
+								<div style="height: calc(100% - 51px);background-color: #ed6790;">
+									<img class="visible imagenPregunta" src="../public/img/seno.png" >
+								</div>
+
+								<div class="" style="    background: #db2763; border: 1px solid #db2763; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);border-top: 1px solid #db2763;padding: 20px;">
+									<h1 style='text-align:center; color: #ffffff;font-size: 36px;'>Cáncer de seno</h1>	
+
+
+
+								</div>
+							</div>
+
+
+						</div>
+
+
+						<div  class="tipoPregunta visible fadeIn col-md-6 col-sm-12 preguntaDerecha" ng-click="goCervix()" >
+
+							<div md-ink-ripple="#009997" style="height: 100%; position: relative;">
+								<div style="height: calc(100% - 51px);    background: #009997;">
+
+
+									<img class="visible imagenPregunta" src="../public/img/cuello.png" >
+
+								</div>
+
+								<div class="" style="    background: #009997; border: 1px solid #009997; box-shadow: 0 1px 3px 0 rgba(0,0,0,0.2), 0 1px 1px 0 rgba(0,0,0,0.14), 0 2px 1px -1px rgba(0,0,0,0.12);padding: 20px;
+								border-top: 1px solid #009997;">
+								<h1 style='text-align:center; color: #ffffff;font-size: 36px;'>Cáncer de cuello uterino</h1>	
+
+
+
+							</div>
+						</div>
+
+
+					</div>
+
+				</div>
+
+			</md-content>
+
+		</div>
+
+	</div> 
+
+</div>  
+
+</section>
+<div class="foot" style="height: 45px; width: 100%; background-color: #ff6390; color: white;">
+	<p style="text-align: center;">Todos los derechos reservados | Ámate | 2017</p>
+</div>
+

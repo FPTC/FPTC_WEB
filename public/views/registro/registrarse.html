@@ -1,0 +1,81 @@
+
+
+<section style="background-color:white;height:calc(100vh); width: 100vw; display: inherit ;    min-width: 350px;" >
+
+	<div ng-model="displayForm" id="cierpoInicio" style="display: {{displayForm}};">
+
+
+
+		<div class="cuerpo" style="height: 100%;">
+
+			<div class="seccionCuerpo" style="height: 100%;background:  rgba(128, 128, 128, 0.05);">
+
+				<div class="loginMarco" style="padding: 20px;background: white;">
+
+					<div class="" style="" >
+						<h3 style="text-align: center; font-size: xx-large; margin-bottom: 0px !important;">Registro de usuario</h3>
+					</div>
+
+
+					<form name="formularioForm">
+						<md-content md-theme="formulario" style="margin-bottom:50px; background-color: white;">
+
+
+						<div class="formularioRegistro" style="    margin-left: 12.5% !important;
+						width: 75% !important;">
+						<md-input-container class="col-sm-12 col-xl-12 col-md-12" flex="100" style="margin-bottom: 0px !important;">
+						<label>Correo electronico</label>
+						<input type="text" required name="email" ng-model="emailRegistro" ng-pattern="/^.+@.+\..+$/" ng-change="validar()">
+						<div ng-messages="formularioForm.email.$error">
+							<div ng-message="required">Este campo es requerido.</div>
+							<div ng-message="pattern">Este campo debe ser un email.</div>
+						</div>
+					</md-input-container>
+
+
+					<md-input-container class="col-sm-12 col-xl-12 col-md-12" flex="100">
+					<label>Contraseña</label>
+					<input type="password" required name="password" ng-model="password" ng-change="validar()">
+					<div ng-messages="formularioForm.password.$error">
+						<div ng-message="required">Este campo es requerido.</div>
+
+					</div>
+				</md-input-container>
+
+				<!-- 	<md-input-container flex="100">
+					<label>Confirmar contraseña</label>
+					<input type="text" required name="ccontraseña" ng-model="ccontraseña" ng-change="validar()">
+					<div ng-messages="formularioForm.email.$error">
+						<div ng-message="required">Este campo es requerido.</div>
+				
+					</div>
+					</md-input-container>
+				-->
+
+
+
+
+
+				<div style="">
+
+					<md-button ng-click="registrarse()" class="md-raised md-primary primaryAmate"   style="    text-transform: initial;    margin-bottom: 20px; width: 80%; margin-left:10%;   " >Registrarme</md-button>
+					<a ng-click="goSeccion('login')" href="../public/#/login"  style="margin-top:20px; text-align: center;text-decoration: none;    margin-left: calc(50% - 45px);">Volver al login</a>
+				</div>
+			</div>
+
+
+
+
+		</md-content>
+	</form>
+</div>
+
+
+
+</div>
+
+</div> 
+
+</div>  
+
+</section>

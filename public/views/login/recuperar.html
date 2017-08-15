@@ -1,0 +1,67 @@
+<section style="  background-color: #f9f9f9;height:calc(100% - 60px) !important;position: absolute; overflow-y:hidden; width: 100%;" class="visible" id="toast-container-mensaje">
+
+
+	<div ng-model="displayForm" style="display: {{displayForm}};     position: initial;
+	width: 100%;
+	height: 100%;">
+	
+
+		<div style="    margin:auto;
+		width: 400px;
+		background: white;
+		box-shadow: 1px 1px 1px #888888;
+		position: absolute;
+		margin-left: calc(50% - 200px);
+		margin-top: 100px;
+
+		">
+		<div class="" style="" >
+			<h3 style="text-align: center; font-size: xx-large;">Recuperar Contraseña</h3>
+		</div>
+
+		<div class="cuerpo">
+			<div class="seccionCuerpo" ng-model="formulario">
+
+				<form name="formularioForm">
+					<md-content md-theme="formulario" style="margin-bottom:50px; background-color: white;">
+
+
+						<div class="formularioRegistro" style="    margin-left: 12.5% !important;
+						width: 75% !important;">
+						<md-input-container class="col-sm-12 col-xl-12 col-md-12" flex="100">
+							<label>email</label>
+							<input type="email" required name="email" ng-model="emailRecuperar" ng-change="validar()">
+							<div ng-messages="formularioForm.email.$error">
+								<div ng-message="required">Este campo es requerido.</div>
+								<div ng-message="email">Este campo debe ser un email.</div>
+							</div>
+						</md-input-container>
+
+						
+
+
+
+						<div style="">
+
+							<md-button ng-click="recuperarContrasena()" class="md-raised primaryAmate " ng-disabled=""   style="    text-transform: initial;    margin-bottom: 20px; width: 80%; margin-left:10%;   " >Enviar email</md-button>
+							<a ng-click="goSeccion('login')" href="../public/#/login"   style="margin-top:20px; text-align: center;text-decoration: none;margin-left: 100px;">Volver al login</a>
+						</div>
+					</div>
+
+
+
+
+				</md-content>
+			</form>
+			
+
+		</div>
+	</div>
+
+</div>
+
+
+
+</div>
+
+</section><!-- /#right-content -->

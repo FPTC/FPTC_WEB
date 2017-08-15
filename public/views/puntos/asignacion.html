@@ -1,0 +1,91 @@
+			
+<div class="titulo" >
+	<h1 class="tituloPrincipal senoPrimary visible fadeIn">Asignación de puntos</h1>
+</div>
+
+<section style="background-color:white;height:calc(100vh); display: inherit; width: 100%;" >
+
+	<div ng-model="displayForm" id="cuerpoInicio" style="display: {{displayForm}}; width: 100%">
+
+		<div class="cuerpo visible" style="height: 100%;">
+
+			<div class="seccionCuerpo visible" style="height: 100%;">
+
+
+				<md-content md-theme="formulario" style=" display:grid; background-color: white; overflow-x: hidden; height: 100%;background-image: url(../public/img/puntaje-amate.jpg);background-size: 100% 100%; padding: 10px;">
+
+
+
+					<div style="text-align: center; margin:auto; display: inline-table; padding: 20px; background: rgba(255, 255, 255, 0.65); border-radius: 28px;" id="marcoPremio" class="">
+
+						<h2 style="width:100%; max-width:500px; margin:auto;font-size: 42px; color:#db2763 !important;">¡Felicitaciones!</h2>
+						<h2 class="mensajeFelicitaciones"> Ahora sabes lo importante que es hacerte la mamografía y la citología vaginal para detectar a tiempo el cáncer de seno y prevenir el cáncer de cuello uterino.</h2>
+
+						<div id="acompanamiento" class="noVisible">
+
+						<h2 class="mensajeFelicitaciones" style="color:#db2763; font-size: 30px;">¿Deseas acompañamiento?</h2>
+
+							<h2 class="mensajeFelicitaciones"> De acuerdo a tus respuestas es tiempo de que te hagas el examen de {{mensaje}}. Te gustaría que te contactáramos para ayudarte a sacar tu cita y estar al día en el cuidado de tu salud?
+							</h2>
+
+							<div style="display: inline-table; width: 100%; margin-top: 15px;" >
+
+								<h2 class="mensajeFelicitaciones" style="color:#db2763; font-size: 24px;">¿Deseas ser contactada?</h2>
+
+								<md-button  class="md-primary btnPrimaryCervix " id="btnReclamar" style=" max-width: 250px;  "
+								ng-click="contactar(true)"> Si </md-button>
+
+								<md-button  class="md-primary btnPrimaryCervix " id="btnReclamar" style=" max-width: 250px; background-color: rgb(216,67,21) !important; "
+								ng-click="contactar(false)"> No </md-button>
+
+							</div>
+
+
+							
+
+						</div>
+						
+						<h3 class="mensajeFelicitaciones" style="color:#db2763; font-size: 18px;">En el transcurso del día llegará tu premio correspondiente a la recarga. ¡Muchas gracias por tu participación!</h3>
+						
+
+						<div id="recomendaciones" class="noVisible">
+
+						<h2 class="mensajeFelicitaciones" style="text-align: left !important;"> Y recuerda siempre:</h2>
+						<h2 class="mensajeFelicitaciones" style="text-align: left !important;">1. Evitas el cáncer cuando controlas el consumo de licor, dejas de fumar y tienes sexo CON condón.</h2>
+						<h2 class="mensajeFelicitaciones" style="text-align: left !important;">2. Y la vacuna contra el virus del papiloma humano te protege contra el cáncer de cuello uterino.</h2>
+							
+						</div>	
+
+						<h2 class="mensajeFelicitaciones" style="color:#db2763; font-size: 30px;">¡Importante!</h2>
+						<h2 class="mensajeFelicitaciones"> Independiente de tu edad si tienes alguna masa, dolor, salida de líquido o molestia en el seno debes consultar al médico.
+						</h2>
+						<h2 class="mensajeFelicitaciones"> Sangrados vaginales anormales o dolor vaginal también requieren que consultes al médico.</h2>
+
+						<h2 class="mensajeFelicitaciones"> Esta aplicación no receta, diagnostica o formula tratamientos ni reemplaza la consulta con un médico.</h2>
+
+						<h2 class="mensajeFelicitaciones">Para más información contáctanos en </h2>
+						<a href="amate@pfccap.com">amate@pfccap.com</a>
+
+						<div style="widows: 100%;">
+							<img class="visible imagenLogoWeb" src="../public/img/logoAmateColor.png" style="width: 300px;">
+						</div>
+
+					
+						<h2 class="mensajeFelicitaciones">Muchas gracias por tu participación</h2>
+
+						<h2 class="mensajeFelicitaciones noVisible"  style="color:#db2763; font-size: 30px;">¡Tu recarga llegará en el transcurso del día!</h2>
+					</div>
+
+
+				</md-content>
+
+			</div>
+
+		</div> 
+
+	</div>  
+
+</section>
+<div class="foot" style="height: 45px; width: 100%; background-color: #ff6390; color: white;">
+	<p style="text-align: center;">Todos los derechos reservados | Ámate | 2017</p>
+</div>
