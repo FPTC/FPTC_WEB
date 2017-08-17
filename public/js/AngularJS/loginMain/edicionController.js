@@ -28,14 +28,14 @@
    {
     var tempDate = moment(date);
 
-    console.log("fecha "+date);
+
     return (tempDate.isValid() ? tempDate.format('DD/M/YYYY') : '');
   };
 })
  .controller('edicionMainController' , function ($scope  , $mdDialog, $mdMedia, $location , registrarCliente, $firebaseAuth, $mdToast , $timeout, $mdSidenav, transacciones ) {
   $scope.minima = new Date();
   $scope.isOpen = false;
-  console.log("fecha "+$scope.minima.setMonth($scope.minima.getMonth() - 168));
+  
 
 
   var last = {
@@ -52,7 +52,7 @@
 
     return Object.keys($scope.toastPosition)
     .filter(function(pos) {
-      console.log(pos);
+
       return $scope.toastPosition[pos]; })
     .join(' ');
   };
@@ -85,24 +85,24 @@
   $scope.btnGuardarDatos=true;
 
   $scope.validar = function (){
-    console.log($scope.formularioForm);
+
     if($scope.formularioForm.$valid){
       $scope.btnGuardarDatos=false;
-      console.log("valido");
+
     }   
     else{
       $scope.btnGuardarDatos=true;
-      console.log("invalido");
+      
     }
 
-    console.log($scope.formularioForm.$valid);
+
   };
 
 
   $scope.validarTelefono= function(){
 
     if ($scope.formulario.envio.telefono.length < 6) {
-      console.log(" no validando");
+
       $scope.formularioForm.telefono.$error.validationError = true;
       $scope.formularioForm.$valid = false;
       $scope.formularioForm.telefono.$invalid=true;
@@ -111,7 +111,7 @@
     else {
       $scope.formularioForm.telefono.$error.validationError = false;
       $scope.formularioForm.telefono.$invalid=false;
-      console.log("  validando");
+      
     }
 
   }
@@ -141,10 +141,10 @@
 
     $scope.minima = new Date();
     $scope.isOpen = false;
-    console.log("fecha "+$scope.minima.setMonth($scope.minima.getMonth() - 168));
+    
 
     $scope.maxima = new Date();
-    console.log("fecha maxima"+$scope.maxima.setMonth($scope.maxima.getMonth() - (1080) ));
+    
 
     $scope.formulario={};
     $scope.formulario.envio={};
@@ -164,22 +164,17 @@
       var llegada=  firebase.database().ref('usuarios/'+user.uid). once('value').then(function(datos) {
 
         if(datos.val() == null){
-          console.log("es nul");
+
           $scope.nulo=1;
         }else{
-          console.log("ni es nul");
+
           $scope.nulo=0;
         }
 
         if(datos.val() != null){
-          console.log("datos llegada");
-          console.log(datos.val());
+
           angular.element('#name').focus();
 
-          
-
-
-          console.log(datos.val());
 
           if(datos.val().dateBirthday){
            var parts =datos.val().dateBirthday.split('/');
@@ -193,24 +188,20 @@
 
 
 
-
-
-         console.log(mydate);
-
          $scope.formulario.envio.name  = datos.val().name;
          $scope.formulario.envio.lastName  = datos.val().lastName;
-       $scope.formulario.envio.fechaNacimiento = mydate; // "2017-04-25";//new Date(datos.val().dateBirthDay);
-       $scope.formulario.envio.telefono = datos.val().phoneNumber;
-       $scope.formulario.envio.direccion = datos.val().address;
-       $scope.formulario.envio.barrio = datos.val().neighborhood;
-       $scope.formulario.envio.estatura = datos.val().height;
-       $scope.formulario.envio.peso = datos.val().weight;
-       $scope.formulario.envio.hijos = datos.val().hasChilds;
-     }
+         $scope.formulario.envio.fechaNacimiento = mydate; 
+         $scope.formulario.envio.telefono = datos.val().phoneNumber;
+         $scope.formulario.envio.direccion = datos.val().address;
+         $scope.formulario.envio.barrio = datos.val().neighborhood;
+         $scope.formulario.envio.estatura = datos.val().height;
+         $scope.formulario.envio.peso = datos.val().weight;
+         $scope.formulario.envio.hijos = datos.val().hasChilds;
+       }
 
- $scope.$apply();
+       $scope.$apply();
 
-   });
+     });
 
 
 
@@ -225,12 +216,10 @@
         var dia=date.getDate();
         var ano=date.getFullYear();
 
-        console.log("nulo viene en "+$scope.nulo);
-
-        console.log( mes  + '-' + dia + '-' +  date.getFullYear());
+  
 
         if($scope.nulo==1){
-        	console.log($scope.formulario.envio);
+      
           firebase.database().ref('usuarios/' + user.uid).update({
             name: $scope.formulario.envio.name ,
             lastName: $scope.formulario.envio.lastName ,
@@ -256,7 +245,7 @@
           });
 
         }else{
-         console.log($scope.formulario.envio);
+        
          firebase.database().ref('usuarios/' + user.uid).update({
           name: $scope.formulario.envio.name ,
           lastName: $scope.formulario.envio.lastName ,
@@ -296,7 +285,7 @@
          $location.path( "preguntas" );
        }, 1000 );
 
-      
+
 
      }
    }else {
@@ -306,6 +295,6 @@
  });
 
 
-})
+  })
 
 })();

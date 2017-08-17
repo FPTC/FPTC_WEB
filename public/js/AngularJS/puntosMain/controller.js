@@ -7,18 +7,18 @@
 
         this.default = function(uid) {
 
-           var respuesta= $http({
-              method: 'get',
-              url: 'https://us-central1-fptc-test.cloudfunctions.net/validationCancerType?uid='+uid,
-              headers: {
-                  "Access-Control-Allow-Origin": "*"}
+         var respuesta= $http({
+          method: 'get',
+          url: 'https://us-central1-fptc-test.cloudfunctions.net/validationCancerType?uid='+uid,
+          headers: {
+              "Access-Control-Allow-Origin": "*"}
 
 
-              })
-           console.log(respuesta); 
-           return respuesta;
-       }
-   })
+          })
+         
+         return respuesta;
+     }
+ })
 
     .controller('puntosMainController' , function ($scope  , $mdDialog, $mdMedia, $location , registrarCliente, $firebaseAuth, $mdToast,  $timeout , $mdSidenav,transacciones ) {
 
@@ -51,15 +51,13 @@
 
         $scope.reclamar = function(){
 
-            console.log($scope.dataUser.numOpportunities+" y op seno"+$scope.dataUser.repetitionsAnswersBreast+" y num oc"+$scope.dataUser.numOpportunities+" y conc"+$scope.dataUser.repetitionsAnswersCervix);
-
-            console.log($scope.error);
+         
 
             if($scope.error==true){
 
-             var pinTo = $scope.getToastPosition();
-             var toast = $mdToast.simple().textContent('Para reclamar tu premio debes completar tu perfil y los test.').action('').highlightAction(true).hideDelay(4000).position(pinTo).parent(document.querySelectorAll('#toast-container'));
-             $mdToast.show(toast).then(function(response) {
+               var pinTo = $scope.getToastPosition();
+               var toast = $mdToast.simple().textContent('Para reclamar tu premio debes completar tu perfil y los test.').action('').highlightAction(true).hideDelay(4000).position(pinTo).parent(document.querySelectorAll('#toast-container'));
+               $mdToast.show(toast).then(function(response) {
                 if (response == 'ok') {}
 
 
@@ -70,31 +68,29 @@
 
 
 
-         }else{
+           }else{
 
 
-            console.log($scope.info);
 
 
             if($scope.dataUser.numOpportunities ==$scope.info.repetitionsAnswersBreast &&  $scope.dataUser.numOpportunities ==$scope.info.repetitionsAnswersCervix ){
-                console.log("v");
-
+                
 
                 if(!("breastIndication" in $scope.info )){
                     $location.path( "puntos/reclamar" ); 
                 }
                 else{
 
-                 var pinTo = $scope.getToastPosition();
-                 var toast = $mdToast.simple().textContent('Ya has solicitado reclamar tu premio. Sigue atenta con nuestra aplicación para nuevas oportunidades de probar tu conocimiento y aprender. Y recuerda… ¡Ámate cuida tu salud!').action('').highlightAction(true).hideDelay(4000).position(pinTo).parent(document.querySelectorAll('#toast-container'));
-                 $mdToast.show(toast).then(function(response) {
+                   var pinTo = $scope.getToastPosition();
+                   var toast = $mdToast.simple().textContent('Ya has solicitado reclamar tu premio. Sigue atenta con nuestra aplicación para nuevas oportunidades de probar tu conocimiento y aprender. Y recuerda… ¡Ámate cuida tu salud!').action('').highlightAction(true).hideDelay(4000).position(pinTo).parent(document.querySelectorAll('#toast-container'));
+                   $mdToast.show(toast).then(function(response) {
                     if (response == 'ok') {}
                 });
 
-             }
+               }
 
-         }else{
-            console.log("i");
+           }else{
+               
 
             var pinTo = $scope.getToastPosition();
             var toast = $mdToast.simple().textContent('Para reclamar tu premio debes completar todos los módulos en APRENDE SOBRE EL CÁNCER').action('').highlightAction(true).hideDelay(4000).position(pinTo).parent(document.querySelectorAll('#toast-container'));
@@ -121,20 +117,20 @@
       var es=firebase.auth().onAuthStateChanged(function(user) {
 
         if(user){
-            console.log("cambiando estado");
+           
             $scope.cambiarEstado();
 
 
 
             var usuario=  firebase.database().ref('usuarios/'+user.uid). once('value').then(function(info) {
 
-                console.log();
+                
                 $scope.info = info.val();
 
                 var usuario=  firebase.database().ref('configuracion'). once('value').then(function(datos) {
 
                     $scope.dataUser = datos.val();
-                    console.log($scope.dataUser);
+                    
 
                     if(info.val() != null){
                         $scope.puntos=info.val().pointsBreast + info.val().pointsCervix;
@@ -147,7 +143,7 @@
                     if(datos.val().numOpportunities == info.val().repetitionsAnswersBreast &&  datos.val().numOpportunities == info.val().repetitionsAnswersCervix  ){
 
 
-                        console.log((info.val().pointsBreast + info.val().pointsCervix ));
+                      
 
 
                         document.getElementById("btnReclamar").classList.remove("noVisible");
@@ -167,8 +163,7 @@
 
             var regalos=  firebase.database().ref('premios').once('value').then(function(regalos) {
 
-                console.log(regalos.val());
-
+              
                 if(regalos.val()){
 
 
@@ -179,7 +174,6 @@
 
                     for(regalo in regalos){
 
-                        console.log(regalo);
 
                         $scope.regalosEnvio[i] = {};
                         $scope.regalosEnvio[i].nombreRegalo = regalos[regalo].gift;
@@ -211,9 +205,9 @@
             firebase.database().ref('usuarios/' + $scope.uid).update({
                 appointment: true            }).then(function(info) {
 
-                   $location.path("puntos");
-                   $scope.$apply();
-               });;
+                 $location.path("puntos");
+                 $scope.$apply();
+             });;
 
 
 
@@ -223,7 +217,7 @@
                 }).then(function(info) {
                     $location.path("puntos");
                     $scope.$apply();
-             });;
+                });;
             }
         }    
 
@@ -234,7 +228,7 @@
 
             if(user){
 
-                console.log("cambiando estado");
+
                 $scope.cambiarEstado();
 
                 $scope.uid=user.uid;
@@ -242,24 +236,23 @@
 
                 firebase.database().ref('usuarios/' + $scope.uid).update({
                     state: 2
-                 });
+                });
 
 
                 var usuario=  firebase.database().ref('usuarios/'+user.uid). once('value').then(function(info) {
 
-                    $scope.userInfo = info.val();
-                    console.log($scope.userInfo);
+                    $scope.userInfo = info.val();                   
 
                     var dateosf=  firebase.database().ref('configuracion'). once('value').then(function(datos) {
 
                         if(datos.val().numOpportunities == info.val().repetitionsAnswersBreast &&  datos.val().numOpportunities == info.val().repetitionsAnswersCervix  ){
 
-                            console.log((info.val().pointsBreast + info.val().pointsCervix ));
+                         
 
                             if((info.val().pointsBreast + info.val().pointsCervix ) > 5){
                                 $scope.$apply();
                                 serviceMensajes.default(user.uid).then(function(respuesta){
-                                    console.log(respuesta.data);
+                                  
 
                                     $scope.mensaje ="";
 
@@ -268,9 +261,9 @@
                                         $scope.mensaje="mamografía"
                                     }
 
-                                 if (respuesta.data.breast == false && respuesta.data.cervix == true ){
+                                    if (respuesta.data.breast == false && respuesta.data.cervix == true ){
 
-                                    $scope.mensaje="citología"
+                                        $scope.mensaje="citología"
                                     }
                                     if(respuesta.data.breast == true && respuesta.data.cervix == true ){
                                         $scope.mensaje="mamografía y citología"

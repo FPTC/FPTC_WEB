@@ -68,7 +68,6 @@
         return {
             validar: function(){
 
-                console.log("factory");
 
                 var es = firebase.auth().onAuthStateChanged(function(user) {
 
@@ -84,7 +83,6 @@
                                 if(datos.val().numOpportunities == info.val().repetitionsAnswersBreast &&  datos.val().numOpportunities == info.val().repetitionsAnswersCervix ){
 
 
-                                    console.log((info.val().pointsBreast + info.val().pointsCervix ));
 
                                     if((info.val().pointsBreast + info.val().pointsCervix ) > 50){
                                         
@@ -138,13 +136,11 @@
     window.onresize = function(){ 
 
         if (window.matchMedia("(orientation: portrait)").matches) {
-            console.log("v");
+   
         }
 
         if (window.matchMedia("(orientation: landscape)").matches) {
-            console.log("h");
-
-            
+                
         }
 
     } 
@@ -179,7 +175,7 @@
                 $scope.nombreUsuario.parentProperty = "" + user.providerData[0].displayName;
             } else {
 
-                $scope.imagenNav.parentProperty = "http://40.71.81.33/fundacancer/public/img/amateLogoSolo.png";
+                $scope.imagenNav.parentProperty = "img/amateLogoSolo.png";
                 $scope.nombreUsuario.parentProperty = "" + user.providerData[0].uid;
             }
             $scope.mostrarMenuHeader.parentProperty = "block";
@@ -225,7 +221,7 @@
 $scope.openMenu = function($mdOpenMenu, ev) {
 
     $scope.$on("$mdMenuClose", function() {
-        console.log("menu closing");
+    
     });
     originatorEv = ev;
     $mdOpenMenu(ev);
@@ -233,7 +229,7 @@ $scope.openMenu = function($mdOpenMenu, ev) {
 $scope.informacionUsuario = {};
 $scope.informacionUsuario.parentProperty = "";
 $scope.imagenNav = {};
-$scope.imagenNav.parentProperty = "http://40.71.81.33/fundacancer/public/img/amateLogoSolo.png";
+$scope.imagenNav.parentProperty = "img/amateLogoSolo.png";
 $scope.nombreUsuario = {};
 $scope.nombreUsuario.parentProperty = "";
 $scope.mostrarMenuHeader = {};
@@ -252,11 +248,11 @@ buildToggler();
 $scope.openNav = true;
 $scope.estado = function estado() {
     if ($scope.openNav == true) {
-        console.log("0");
+       
         $scope.openNav = false;
         $("#cuerpo").removeClass("cuerpoWeb");
     } else {
-        console.log("c");
+     
         $scope.openNav = true;
         $("#cuerpo").addClass("cuerpoWeb");
     }

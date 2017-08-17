@@ -100,7 +100,7 @@
 
 				function shuffle(sourceArray) {
 
-					console.log(sourceArray);
+				
 
 					return $q(function(resolve, reject) {
 
@@ -206,7 +206,7 @@
 							document.getElementById("marcoEdicion").classList.remove("noVisible");
 						}
 
-						console.log("el perfil llega en "+$scope.perfilCompletado);
+						
 					}
 
 
@@ -225,8 +225,7 @@
 
 							$scope.marco="visibleMarco";
 							$scope.variable = datos.val();
-							console.log("Imprimiendo variable variable");
-							console.log($scope.variable);
+						
 
 
 							$scope.preguntasRespondidas = [];	
@@ -237,8 +236,7 @@
 							
 
 							$scope.terminado = function(){
-								console.log("preguntas por hacer");
-								console.log($scope.variable);
+						
 
 								document.getElementById("cargandoPreguntas").classList.remove("visible");
 								document.getElementById("cargandoPreguntas").classList.add("noVisible");
@@ -253,7 +251,7 @@
 								}
 
 								if($scope.variable.length==0){
-									console.log("ya las temrinaste cabrn");
+									
 								}
 
 							}
@@ -264,22 +262,18 @@
 								document.getElementById("cargandoPreguntas").classList.add("visible");
 
 
-								console.log("repeticiones "+$scope.repeticiones);
-
 
 
 								if($scope.contadorHabilitadas >= 0){
 
-									console.log($scope.contadorHabilitadas);
+								
 
 									firebase.database().ref("respuestas/cervixCancer/"+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+"/"+$scope.datosUsuario.uid).once('value' , function(llegada) {
 
-										console.log("respuestas/cervixCancer/"+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+"/"+$scope.datosUsuario.uid);
-
+									
 
 										if(llegada.val() == null ){
-											console.log("no llego "+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+" de respuestas/cervixCancer/"+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+"/"+$scope.datosUsuario.uid);
-											preguntasPorHacer++;	
+												preguntasPorHacer++;	
 										}
 										else{
 
@@ -303,7 +297,7 @@
 
 
 								if($scope.diferencia > 0){
-									console.log("faltan "+$scope.diferencia+" dias");
+								
 
 									// document.getElementById("mensajePreguntas").classList.remove("visible");
 									// document.getElementById("mensajePreguntas").classList.add("noVisible");
@@ -323,14 +317,14 @@
 
 												document.getElementById("btnPuntos").classList.remove("noVisible");
 												document.getElementById("btnPuntos").classList.add("visible");
-												console.log("p");
+											
 											}
 											else{
 												//no he acabado cervix
 
 												document.getElementById("btnTest").classList.remove("noVisible");
 												document.getElementById("btnTest").classList.add("visible");
-												console.log("t");
+											
 											}
 
 
@@ -347,7 +341,7 @@
 										$scope.preguntasHabilitadas = llegada.val();
 										$scope.preguntasHabilitadas = Object.keys($scope.preguntasHabilitadas);
 
-										console.log(llegada.val());
+										
 										$scope.contadorHabilitadas = $scope.preguntasHabilitadas.length - 1;
 										$scope.borrarRespondidas();
 									});
@@ -376,14 +370,14 @@
 
 												document.getElementById("btnPuntos").classList.remove("noVisible");
 												document.getElementById("btnPuntos").classList.add("visible");
-												console.log("p");
+												
 											}
 											else{
 												//no he acabado cervix
 
 												document.getElementById("btnTest").classList.remove("noVisible");
 												document.getElementById("btnTest").classList.add("visible");
-												console.log("t");
+												
 											}
 
 
@@ -391,7 +385,7 @@
 
 
 
-								console.log("NO SE PUEDE CONTESTAR MAS");
+							
 							}
 
 							
@@ -405,8 +399,7 @@
 									document.getElementById("marcoPregunta").classList.remove("noVisible");
 									document.getElementById("marcoPregunta").classList.add("visible");
 
-									console.log("iniciamos la creacion");
-									console.log(result);
+									
 									$scope.indicesAleatorios = result;
 
 
@@ -504,7 +497,7 @@
 
 									$scope.indicesRandom = $scope.indices;
 									$scope.variable = $scope.preguntas.valores;
-									console.log($scope.preguntas);
+									
 
 
 
@@ -546,7 +539,7 @@ $scope.respuestaCompuesta = function(id){
 $scope.desabledSeleccion = false;
 
 $scope.respuesta = function(id){
-	console.log($scope.correcta);
+	
 	if($scope.correcta==""){
 		$scope.idSeleccionada= id;
 		$scope.mostrarLeyenda = "";
@@ -581,7 +574,7 @@ $scope.respuesta = function(id){
 	var guardarRespuesta = firebase.database().ref("respuestas/cervixCancer/"+$scope.preguntas.valores[$scope.preguntas.actual].id+"/"+$scope.datosUsuario.uid)
 	.update($scope.variableUpdate);
 
-	console.log($scope.variableUpdate);
+
 
 
 
@@ -737,14 +730,14 @@ $scope.seguir = function(){
 				
 				document.getElementById("btnPuntos").classList.remove("noVisible");
 				document.getElementById("btnPuntos").classList.add("visible");
-				console.log("p");
+				
 			}
 			else{
 				//no he acabado seno
 				
 				document.getElementById("btnTest").classList.remove("noVisible");
 				document.getElementById("btnTest").classList.add("visible");
-				console.log("t");
+				
 			}
 
 
@@ -871,7 +864,7 @@ $scope.seguir = function(){
 
 				function shuffle(sourceArray) {
 
-					console.log(sourceArray);
+			
 
 					return $q(function(resolve, reject) {
 
@@ -912,7 +905,7 @@ $scope.seguir = function(){
 
 						$scope.$apply();
 
-						console.log(info.val());
+						
 
 						firebase.database().ref("configuracion").once('value' , function(llegada) {
 
@@ -977,7 +970,7 @@ $scope.seguir = function(){
 							document.getElementById("marcoEdicion").classList.remove("noVisible");
 						}
 
-						console.log("el perfil llega en "+$scope.perfilCompletado);
+						
 					}
 
 
@@ -1006,21 +999,16 @@ $scope.seguir = function(){
 
 								$scope.marco="visibleMarco";
 								$scope.variable = datos.val();
-								console.log("Imprimiendo variable variable");
-								console.log($scope.variable);
-
+					
 
 								$scope.preguntasRespondidas = [];	
 
-								console.log("Imprimiendo preguntasHabilitadas");
-								console.log($scope.preguntasHabilitadas);
+							
 
 								$scope.contadorHabilitadas = $scope.preguntasHabilitadas.length - 1;
 
 								$scope.terminado = function(){
-									console.log("preguntas por hacer");
-									console.log($scope.variable);
-
+							
 									$scope.crearRespuestas();
 
 									document.getElementById("cargandoPreguntas").classList.remove("visible");
@@ -1034,7 +1022,7 @@ $scope.seguir = function(){
 									}
 
 									if($scope.variable.length==0){
-										console.log("ya las temrinaste cabrn");
+									
 									}
 
 								}
@@ -1045,22 +1033,20 @@ $scope.seguir = function(){
 									document.getElementById("cargandoPreguntas").classList.add("visible");
 
 
-									console.log("repeticiones "+$scope.repeticiones);
+								
 
 
 
 									if($scope.contadorHabilitadas >= 0){
 
-										console.log($scope.contadorHabilitadas);
+								
 
 										firebase.database().ref("respuestas/breastCancer/"+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+"/"+$scope.datosUsuario.uid).once('value' , function(llegada) {
 
 
-											console.log("respuestas/breastCancer/"+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+"/"+$scope.datosUsuario.uid);
-
+										
 											if(llegada.val() == null ){
-												console.log("no llego "+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+" de respuestas/breastCancer/"+$scope.preguntasHabilitadas[$scope.contadorHabilitadas]+"/"+$scope.datosUsuario.uid);
-												preguntasPorHacer++;	
+											preguntasPorHacer++;	
 											}
 											else{
 
@@ -1081,14 +1067,12 @@ $scope.seguir = function(){
 									}
 								}
 
-								console.log("re "+$scope.repeticiones+" ro"+$scope.rondas);
-
 
 								if($scope.repeticiones < $scope.rondas ){
 
 
 									if($scope.diferencia > 0){
-										console.log("faltan "+$scope.diferencia+" dias");
+									
 
 										// document.getElementById("mensajePreguntas").classList.remove("visible");
 										// document.getElementById("mensajePreguntas").classList.add("noVisible");
@@ -1107,14 +1091,14 @@ $scope.seguir = function(){
 
 												document.getElementById("btnPuntos").classList.remove("noVisible");
 												document.getElementById("btnPuntos").classList.add("visible");
-												console.log("p");
+											
 											}
 											else{
 												//no he acabado cervix
 
 												document.getElementById("btnTest").classList.remove("noVisible");
 												document.getElementById("btnTest").classList.add("visible");
-												console.log("t");
+											
 											}
 
 
@@ -1130,7 +1114,7 @@ $scope.seguir = function(){
 											$scope.preguntasHabilitadas = llegada.val();
 											$scope.preguntasHabilitadas = Object.keys($scope.preguntasHabilitadas);
 
-											console.log(llegada.val());
+										
 											$scope.contadorHabilitadas = $scope.preguntasHabilitadas.length - 1;
 											$scope.borrarRespondidas();
 										});
@@ -1152,14 +1136,14 @@ $scope.seguir = function(){
 
 												document.getElementById("btnPuntos").classList.remove("noVisible");
 												document.getElementById("btnPuntos").classList.add("visible");
-												console.log("p");
+											
 											}
 											else{
 												//no he acabado cervix
 
 												document.getElementById("btnTest").classList.remove("noVisible");
 												document.getElementById("btnTest").classList.add("visible");
-												console.log("t");
+											
 											}
 
 
@@ -1171,7 +1155,7 @@ $scope.seguir = function(){
 
 									document.getElementById("marcoPremio").classList.remove("noVisible");
 									document.getElementById("marcoPremio").classList.add("visible");
-									console.log("NO SE PUEDE CONTESTAR MAS");
+							
 								}
 
 
@@ -1186,8 +1170,7 @@ $scope.seguir = function(){
 										document.getElementById("marcoPregunta").classList.remove("noVisible");
 										document.getElementById("marcoPregunta").classList.add("visible");
 
-										console.log("iniciamos la creacion");
-										console.log(result);
+								
 										$scope.indicesAleatorios = result;
 
 
@@ -1285,7 +1268,7 @@ $scope.seguir = function(){
 
 										$scope.indicesRandom = $scope.indices;
 										$scope.variable = $scope.preguntas.valores;
-										console.log($scope.preguntas);
+									
 
 
 
@@ -1327,8 +1310,7 @@ $scope.respuestaCompuesta = function(id){
 	.update($scope.variableUpdate);
 
 	if("info" in $scope.preguntas.valores[$scope.preguntas.actual]){
-		console.log("trae info");
-		console.log($scope.preguntas.valores[$scope.preguntas.actual]);
+	
 
 		$scope.visibleAdicionales = "";
 		$scope.disabledRespuestas = true;
@@ -1393,7 +1375,6 @@ $scope.respuesta = function(id){
 	var guardarRespuesta = firebase.database().ref("respuestas/breastCancer/"+$scope.preguntas.valores[$scope.preguntas.actual].id+"/"+$scope.datosUsuario.uid)
 	.update($scope.variableUpdate);
 
-	console.log($scope.variableUpdate);
 
 
 
@@ -1431,9 +1412,7 @@ $scope.respuesta = function(id){
 
 
 			if("info" in $scope.preguntas.valores[$scope.preguntas.actual]){
-				console.log("trae info");
-				console.log($scope.preguntas.valores[$scope.preguntas.actual]);
-
+				
 				$scope.porcentaje=( (($scope.preguntas.actual+1) / $scope.cantidadPreguntas))*100     ;
 				$scope.visibleAdicionales = "";
 				$scope.disabledRespuestas = true;
@@ -1534,14 +1513,14 @@ $scope.seguir = function(){
 				
 				document.getElementById("btnPuntos").classList.remove("noVisible");
 				document.getElementById("btnPuntos").classList.add("visible");
-				console.log("p");
+				
 			}
 			else{
 				//no he acabado cervix
 				
 				document.getElementById("btnTest").classList.remove("noVisible");
 				document.getElementById("btnTest").classList.add("visible");
-				console.log("t");
+				
 			}
 
 

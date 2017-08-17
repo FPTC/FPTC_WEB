@@ -1,12 +1,12 @@
 {
-  "name": "fundacancer",
+  "name": "Amate web",
   "version": "1.0.0",
   "private": true,
-  "description": "Modulo web de la aplicación FPTC WEB",
+  "description": "Aplicación web Amate",
   "scripts": {
     "start": "grunt"
   },
-  "author": "Fabio Alberto Mayorga <fabiomayorgad@hotmail.com>",
+  "author": "Fabio Alberto Mayorga Duarte <fabiomayorgad@hotmail.com>",
   "license": "MIT",
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -19,8 +19,7 @@
     "angular-aria": "^1.5.8",
     "angular-chart.js": "^0.10.2",
     "angular-material": "^1.1.0",
-    "angular-material-data-table": "^0.10.10",
-    "angular-morris-chart": "^1.3.0",
+    "angular-material-data-table": "^0.10.9",
     "chart.js": "^2.3.0"
   }
 }

@@ -11,7 +11,7 @@
     var es=firebase.auth().onAuthStateChanged(function(user) {
 
       if(user){
-      	console.log("cambiando estado");
+  
       $scope.cambiarEstado();
        
 
