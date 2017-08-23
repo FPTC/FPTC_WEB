@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('ekosave-registro', ['edicionController', 'recuperarControllers', 'registroControllers' ,'puntosMainControllers','webMainControllers', 'loginControllers', 'preguntasControllers', 'ngRoute', 'firebase', "ngMessages"]);
+    var app = angular.module('funcancer', ['edicionController', 'recuperarControllers', 'registroControllers' ,'puntosMainControllers','webMainControllers', 'loginControllers', 'preguntasControllers', 'ngRoute', 'firebase', "ngMessages"]);
     app.config(['$routeProvider', function($routeProvider) {
         $routeProvider.when('/login', {
             templateUrl: "views/login/main.html",

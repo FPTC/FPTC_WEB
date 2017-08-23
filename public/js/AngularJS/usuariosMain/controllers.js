@@ -1,6 +1,6 @@
 (function(){
 
-	var app = angular.module('usuariosControllers' , ['angular.morris' ,'ngMaterial','md.data.table' ,'ngMessages' , 'ngAnimate', 'ekosave-registro' ,'firebase' ])
+	var app = angular.module('usuariosControllers' , ['angular.morris' ,'ngMaterial','md.data.table' ,'ngMessages' , 'ngAnimate', 'funcancer' ,'firebase' ])
 
 
 .service('editarArea', function($http) {

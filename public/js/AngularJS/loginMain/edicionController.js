@@ -1,6 +1,6 @@
 (function(){
 
-	var app = angular.module('edicionController' , ['angular.morris' ,'ngMaterial', 'ngMessages' , 'ngAnimate', 'ekosave-registro' ,'firebase' ])
+	var app = angular.module('edicionController' , ['angular.morris' ,'ngMaterial', 'ngMessages' , 'ngAnimate', 'funcancer' ,'firebase' ])
 
 	.service('registrarCliente', function($http) {
 

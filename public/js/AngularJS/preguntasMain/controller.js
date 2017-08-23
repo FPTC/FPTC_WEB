@@ -1,6 +1,6 @@
 (function(){
 
-	var app = angular.module('preguntasControllers' , ['angular.morris' ,'ngMaterial', 'ngMessages' , 'ngAnimate', 'ekosave-registro' ,'firebase' ])
+	var app = angular.module('preguntasControllers' , ['angular.morris' ,'ngMaterial', 'ngMessages' , 'ngAnimate', 'funcancer' ,'firebase' ])
 
 	.controller('preguntasMainController' , function ($scope , $mdDialog , $mdMedia , $location , $firebaseAuth , $mdToast, $timeout , $mdSidenav ) {
 

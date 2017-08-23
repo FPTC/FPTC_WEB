@@ -1,5 +1,5 @@
 (function() {
-    var app = angular.module('loginControllers', ['angular.morris', 'ngMaterial', 'ngMessages', 'ngAnimate', 'ekosave-registro', 'firebase']).service('registrarCliente', function($http) {
+    var app = angular.module('loginControllers', ['angular.morris', 'ngMaterial', 'ngMessages', 'ngAnimate', 'funcancer', 'firebase']).service('registrarCliente', function($http) {
         this.default = function(data) {
             var respuesta = $http({
                 method: 'POST',

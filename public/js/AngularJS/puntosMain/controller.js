@@ -1,6 +1,6 @@
 (function(){
 
-	var app = angular.module('puntosMainControllers' , ['angular.morris' ,'ngMaterial', 'ngMessages' , 'ngAnimate', 'ekosave-registro' ,'firebase' ])
+	var app = angular.module('puntosMainControllers' , ['angular.morris' ,'ngMaterial', 'ngMessages' , 'ngAnimate', 'funcancer' ,'firebase' ])
 
     .service('serviceMensajes', function($http) {
 
