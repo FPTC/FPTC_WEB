@@ -35,7 +35,7 @@
  .controller('edicionMainController' , function ($scope  , $mdDialog, $mdMedia, $location , registrarCliente, $firebaseAuth, $mdToast , $timeout, $mdSidenav, transacciones ) {
   $scope.minima = new Date();
   $scope.isOpen = false;
-  
+  $scope.minima.setMonth($scope.minima.getMonth() - 168);
 
 
   var last = {
@@ -141,10 +141,10 @@
 
     $scope.minima = new Date();
     $scope.isOpen = false;
-    
+    $scope.minima.setMonth($scope.minima.getMonth() - 168);
 
     $scope.maxima = new Date();
-    
+    $scope.maxima.setMonth($scope.maxima.getMonth() - (1080));
 
     $scope.formulario={};
     $scope.formulario.envio={};
