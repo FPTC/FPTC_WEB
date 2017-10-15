@@ -29,7 +29,7 @@
 
               <md-input-container flex="100" class="col-sm-12 col-xl-12 col-md-12 col-lg-12">
                 <label>Correo electrónico </label>
-                <input type="email" required name="email" ng-model="formulario.envio.email" ng-disabled="true" ng-pattern="/^.+@.+\..+$/" ng-change='validar()' >
+                <input type="email" required name="email" ng-model="formulario.envio.email" ng-disabled="false" ng-pattern="/^.+@.+\..+$/" ng-change='validar()' >
                 <div ng-messages="formularioForm.email.$error">
                   <div ng-message="required">Este campo es requerido.</div>
                   <div ng-message="pattern">Este campo debe ser un email.</div>

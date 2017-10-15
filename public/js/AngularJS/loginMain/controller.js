@@ -117,7 +117,53 @@
         firebase.auth().signInWithPopup(provider).then(function(result) {
             var token = result.credential.accessToken;
             var user = result.user;
-            console.log("bien");
+
+                firebase.database().ref('usuarios/'+user.uid).once('value').then(function(usuario) {
+                    console.log("usuario" + usuario.val());
+                    if(usuario.val()==null){
+
+                        var date= new Date();
+                        var mes=(date.getMonth())+(1);
+                        var dia=date.getDate();
+                        var ano=date.getFullYear();
+                        var email = "";
+                        var name = "";
+                        if (user.email!=null) {
+                            email = user.email;
+                        }
+                        
+                        if(user.displayName != null){
+                            name = user.displayName;                        
+                        }
+                        
+                        firebase.database().ref('usuarios/' + user.uid).set({
+                            name: name,
+                            dateBirthday :  "" ,
+                            email: email ,
+                            age: "" ,
+                            phoneNumber: "" ,
+                            address: "" ,
+                            neighborhood: "" ,
+                            height: "" ,
+                            weight: "" ,
+                            hasChilds: "" ,
+                            pointsTotal: 0 ,
+                            currentPointsBreast: 0,
+                            currentPointsCervix: 0,
+                            pointsBreast : 0,
+                            pointsCervix: 0,
+                            state: 0 ,
+                            repetitionsAnswersBreast: 0,
+                            repetitionsAnswersCervix: 0,
+                            profileCompleted : 0,
+                            dateCompletedCervix : "",
+                            dateCompletedBreast : "",
+                            dateCreated:  dia+"/"+mes+"/"+date.getFullYear() 
+
+                        });
+                    }         
+                });
+
             promise = $timeout(function() {}, 2000);
             $location.path("inicio");
         }).catch(function(error) {

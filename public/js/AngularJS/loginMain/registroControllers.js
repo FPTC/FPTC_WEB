@@ -119,10 +119,9 @@
 				var mes=(date.getMonth())+(1);
 				var dia=date.getDate();
 				var ano=date.getFullYear();
-
-
+			
 				firebase.database().ref('usuarios/' + result.uid).set({
-					firstLastName: "" ,
+					name: "" ,
 					dateBirthday :  "" ,
 					email: result.email ,
 					age: "" ,
