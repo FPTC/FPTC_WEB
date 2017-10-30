@@ -101,7 +101,7 @@
 
   $scope.validarTelefono= function(){
 
-    if ($scope.formulario.envio.telefono.length < 6) {
+    if ($scope.formulario.envio.telefono.length < 7) {
 
       $scope.formularioForm.telefono.$error.validationError = true;
       $scope.formularioForm.$valid = false;
@@ -111,6 +111,23 @@
     else {
       $scope.formularioForm.telefono.$error.validationError = false;
       $scope.formularioForm.telefono.$invalid=false;
+      
+    }
+
+  }
+
+   $scope.validarCelular= function(){
+
+    if ($scope.formulario.envio.celular.length < 10) {
+
+      $scope.formularioForm.celular.$error.validationError = true;
+      $scope.formularioForm.$valid = false;
+      $scope.formularioForm.celular.$invalid=true;
+
+    }
+    else {
+      $scope.formularioForm.celular.$error.validationError = false;
+      $scope.formularioForm.celular.$invalid=false;
       
     }
 
@@ -192,6 +209,11 @@
          $scope.formulario.envio.lastName  = datos.val().lastName;
          $scope.formulario.envio.fechaNacimiento = mydate; 
          $scope.formulario.envio.telefono = datos.val().phoneNumber;
+         if (datos.val().phoneNumberCel) {
+          $scope.formulario.envio.celular = datos.val().phoneNumberCel;
+         }else{
+          $scope.formulario.envio.celular = "";
+         }
          $scope.formulario.envio.direccion = datos.val().address;
          $scope.formulario.envio.barrio = datos.val().neighborhood;
          $scope.formulario.envio.estatura = datos.val().height;
@@ -226,6 +248,7 @@
             dateBirthday :  dia+"/"+mes+"/"+date.getFullYear() ,
             email: user.email ,
             phoneNumber: $scope.formulario.envio.telefono ,
+            phoneNumberCel : $scope.formulario.envio.celular,
             address: $scope.formulario.envio.direccion ,
             neighborhood: $scope.formulario.envio.barrio ,
             height: $scope.formulario.envio.estatura ,
@@ -252,6 +275,7 @@
           dateBirthday :  dia+"/"+mes+"/"+date.getFullYear() ,
           email: user.email ,
           phoneNumber: $scope.formulario.envio.telefono ,
+          phoneNumberCel : $scope.formulario.envio.celular ,
           address: $scope.formulario.envio.direccion ,
           neighborhood: $scope.formulario.envio.barrio ,
           height: $scope.formulario.envio.estatura ,
