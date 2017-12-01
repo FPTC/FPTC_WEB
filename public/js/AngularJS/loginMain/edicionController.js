@@ -203,8 +203,12 @@
            $scope.nulo = 1;
          }
 
-
-
+         if (datos.val().email) {
+         $scope.formulario.envio.email=datos.val().email;
+         }else{
+          $scope.formulario.envio.email=user.email;
+         }
+         
          $scope.formulario.envio.name  = datos.val().name;
          $scope.formulario.envio.lastName  = datos.val().lastName;
          $scope.formulario.envio.fechaNacimiento = mydate; 
@@ -227,8 +231,6 @@
 
 
 
-      $scope.formulario.envio.email=user.email;
-
       $scope.guardarPerfil = function(){
 
         var date = $scope.formulario.envio.fechaNacimiento;
@@ -246,7 +248,7 @@
             name: $scope.formulario.envio.name ,
             lastName: $scope.formulario.envio.lastName ,
             dateBirthday :  dia+"/"+mes+"/"+date.getFullYear() ,
-            email: user.email ,
+            email: $scope.formulario.envio.email ,
             phoneNumber: $scope.formulario.envio.telefono ,
             phoneNumberCel : $scope.formulario.envio.celular,
             address: $scope.formulario.envio.direccion ,
@@ -270,10 +272,10 @@
         }else{
         
          firebase.database().ref('usuarios/' + user.uid).update({
-          name: $scope.formulario.envio.name ,
+          name: $scope.formulario.envio.name,
           lastName: $scope.formulario.envio.lastName ,
           dateBirthday :  dia+"/"+mes+"/"+date.getFullYear() ,
-          email: user.email ,
+          email: $scope.formulario.envio.email ,
           phoneNumber: $scope.formulario.envio.telefono ,
           phoneNumberCel : $scope.formulario.envio.celular ,
           address: $scope.formulario.envio.direccion ,
