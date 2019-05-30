@@ -1,192 +1,235 @@
 
 <div class="titulo" >
-  <h1 ng-model="user" class="tituloPrincipal visible fadeIn">Edición de datos</h1>
+    <h1 ng-model="user" class="tituloPrincipal visible fadeIn">Edición de datos</h1>
 </div>
 <section class="visible" style="background-color:white;height:calc(100vh); display: inherit;" >
 
 
-  <div ng-model="displayForm" id="cierpoInicio" class="" style="display: {{displayForm}};">
+    <div ng-model="displayForm" id="cierpoInicio" class="" style="display: {{displayForm}};">
 
 
 
 
 
-    <div class="cuerpo" style="height: 100%;">
-      <div class="seccionCuerpo" style="height: 100%;">
+        <div class="cuerpo" style="height: 100%;">
+            <div class="seccionCuerpo" style="height: 100%;">
 
 
-        <md-content md-theme="formulario" style="margin-bottom:40px; background-color: white; overflow: hidden;">
-
-
-
-
-          <div class="formularioRegistro" style="">
-
-
-            <form name="formularioForm">
-
-
-
-              <md-input-container flex="100" class="col-sm-12 col-xl-12 col-md-12 col-lg-12">
-                <label>Correo electrónico </label>
-                <input type="email" required name="email" ng-model="formulario.envio.email" ng-disabled="false" ng-pattern="/^.+@.+\..+$/" ng-change='validar()' >
-                <div ng-messages="formularioForm.email.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="pattern">Este campo debe ser un email.</div>
-                </div>
-              </md-input-container>
-
-              <md-input-container flex="100" class="col-sm-12 col-xl-6 col-md-6 col-lg-12">
-                <label>Nombre</label>
-                <input type="text" class="ng-touched" id="named" md-maxlength="50" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/" required name="named" ng-model="formulario.envio.name" ng-change='validar()'>
-                <div ng-messages="formularioForm.named.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="md-maxlength">50 caracteres maximo</div>
-                  <div ng-message="pattern">Este campo debe ser un nombre (no debe contener números o caracteres especiales).</div>
-                </div>
-              </md-input-container>
-
-              <md-input-container flex="100" class="col-sm-12 col-xl-6 col-md-6 col-lg-12">
-                <label>Apellidos</label>
-                <input type="text" class="ng-touched" id="lastName" md-maxlength="50" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/" required name="lastName" ng-model="formulario.envio.lastName" ng-value="formulario.envio.lastName" ng-change='validar()'>
-                <div ng-messages="formularioForm.lastName.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="md-maxlength">50 caracteres maximo</div>
-                  <div ng-message="pattern">Este campo debe ser un nombre (no debe contener números o caracteres especiales).</div>
-                </div>
-              </md-input-container>
-
-              <div class="col-sm-12 col-xl-6 col-md-6">
-                <div style="width: 100% !important;">
-
-                  <label style="font-size: 11px;
-                  color: #a5a5a5;"> Fecha de nacimiento </label>
-                </div>
-                <md-datepicker md-open-on-focus md-current-view="year" value="minima"  name="fechaNacimiento" id="picker" readonly md-min-date="maxima" min="maxima" required md-max-date="minima" ng-model="formulario.envio.fechaNacimiento" md-placeholder="Selecciona un día"></md-datepicker>
-                <div ng-messages="formularioForm.d.$error">
-                  <div ng-message="md-max-date">Debes ser menor de 90 años.</div>
-                  <div ng-message="md-min-date">Debes ser mayor de 14 años.</div>
-                  <div ng-message="maxima">Debes ser mayor de 14 años.</div>
-                  <div ng-message="minima">Debes ser mayor de 14 años.</div>
-                  <div ng-message="required">Debes ingresar tu fecha de nacimiento.</div>
-                </div>
-                <div>
-
-                </div>
-                
-              </div>
+                <md-content md-theme="formulario" style="margin-bottom:40px; background-color: white; overflow: hidden;">
 
 
 
 
-
-              <md-input-container  class="col-md-6  col-xl-6 col-lg-6 col-sm-12" md-rowspan="3">
-                <label>Teléfono fijo</label>
-                <input type="text" required name="telefono" md-maxlength="7" ng-pattern="/^[0-9]*$/" ng-model="formulario.envio.telefono" ng-change='validar();validarTelefono()'>
-                <div ng-messages="formularioForm.telefono.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="md-maxlength">Máximo 7 caracteres</div>
-                  <div ng-message="required">Este campo es requerido.</div>
-                   <div ng-message="validationError">Minimo 7 digitos.</div>
-                </div>
-              </md-input-container>
+                  <div class="formularioRegistro" style="">
 
 
-              <md-input-container  class="col-md-6  col-xl-6 col-lg-6 col-sm-12" md-rowspan="3">
-                <label>Celular</label>
-                <input type="text" required name="celular" md-maxlength="10" ng-pattern="/^[0-9]*$/" ng-model="formulario.envio.celular" ng-change='validar();validarCelular()'>
-                <div ng-messages="formularioForm.celular.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="md-maxlength">Máximo 10 caracteres</div>
-                  <div ng-message="required">Este campo es requerido.</div>
-                   <div ng-message="validationError">Minimo 10 digitos.</div>
-                </div>
-              </md-input-container>
-
-              <md-input-container  class="col-md-6 col-xl-6 col-lg-6 col-sm-12" md-rowspan="3">
-                <label>Dirección</label>
-                <input type="text" required name="direccion" md-maxlength="80" ng-model="formulario.envio.direccion" ng-change='validar()'>
-                <div ng-messages="formularioForm.direccion.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="md-maxlength">Máximo 80 caracteres</div>
-                </div>
-              </md-input-container>
+                    <form name="formularioForm">
 
 
 
-              <md-input-container class="col-md-6 col-xl-6 col-lg-6 col-sm-12">
-                <label>Barrio / residencia</label>
-                <input type="text" required name="barrio" md-maxlength="50" ng-model="formulario.envio.barrio" ng-change='validar()'>
-                <div ng-messages="formularioForm.barrio.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="md-maxlength">Máximo 50 caracteres</div>
+                        <md-input-container flex="100" class="col-sm-12 col-xl-12 col-md-12 col-lg-12">
+                            <label>Correo electrónico </label>
+                            <input type="email" required name="email" ng-model="formulario.envio.email" ng-disabled="false" ng-pattern="/^.+@.+\..+$/" ng-change='validar()' >
+                            <div ng-messages="formularioForm.email.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="pattern">Este campo debe ser un email.</div>
+                            </div>
+                        </md-input-container>
 
-                </div>
-              </md-input-container>
+                        <md-input-container flex="100" class="col-sm-12 col-xl-6 col-md-6 col-lg-12">
+                            <label>Nombre</label>
+                            <input type="text" class="ng-touched" id="named" md-maxlength="50" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/" required name="named" ng-model="formulario.envio.name" ng-change='validar()'>
+                            <div ng-messages="formularioForm.named.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="md-maxlength">50 caracteres maximo</div>
+                                <div ng-message="pattern">Este campo debe ser un nombre (no debe contener números o caracteres especiales).</div>
+                            </div>
+                        </md-input-container>
 
-              <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
-                <label>Estatura (m)</label>
-                <input type="number" required name="estatura" max="2.2" min="1.30" ng-model="formulario.envio.estatura" ng-change='validar()'>
-                <div ng-messages="formularioForm.estatura.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="max">Máximo 2.2 m</div>
-                  <div ng-message="min">Minimo 1.30 m</div>
-                </div>
-              </md-input-container>
+                        <md-input-container flex="100" class="col-sm-12 col-xl-6 col-md-6 col-lg-12">
+                            <label>Apellidos</label>
+                            <input type="text" class="ng-touched" id="lastName" md-maxlength="50" ng-pattern="/^[a-zA-ZñÑáéíóúÁÉÍÓÚ\s]*$/" required name="lastName" ng-model="formulario.envio.lastName" ng-value="formulario.envio.lastName" ng-change='validar()'>
+                            <div ng-messages="formularioForm.lastName.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="md-maxlength">50 caracteres maximo</div>
+                                <div ng-message="pattern">Este campo debe ser un nombre (no debe contener números o caracteres especiales).</div>
+                            </div>
+                        </md-input-container>
 
+                        <div class="col-sm-12 col-xl-6 col-md-6">
+                            <div style="width: 100% !important;">
+                                <label style="font-size: 11px;color: #a5a5a5;"> Fecha de nacimiento </label>
+                            </div>
+                            <md-datepicker md-open-on-focus md-current-view="year" value="minima"  name="fechaNacimiento" id="picker" readonly md-min-date="maxima" min="maxima" required md-max-date="minima" ng-model="formulario.envio.fechaNacimiento" md-placeholder="Selecciona un día"></md-datepicker>
+                            <div ng-messages="formularioForm.d.$error">
+                                <div ng-message="md-max-date">Debes ser menor de 90 años.</div>
+                                <div ng-message="md-min-date">Debes ser mayor de 14 años.</div>
+                                <div ng-message="maxima">Debes ser mayor de 14 años.</div>
+                                <div ng-message="minima">Debes ser mayor de 14 años.</div>
+                                <div ng-message="required">Debes ingresar tu fecha de nacimiento.</div>
+                            </div>
+                            <div>
 
-              <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
-                <label>Peso (Kg)</label>
-                <input type="number" required name="peso" max="200"  min="30"  ng-model="formulario.envio.peso" ng-change='validar()'>
-                <div ng-messages="formularioForm.peso.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="max">Máximo 200 kg</div>
-                  <div ng-message="min">Minimo 30kg.</div>
-                </div>
-              </md-input-container>
+                            </div>
 
+                        </div>
 
-
-
-
-              <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
-                <label>¿Cuántos hijos tienes?</label>
-                <input type="number" required name="hijos" max="20" min="0" ng-model="formulario.envio.hijos" ng-change='validar()'>
-                <div ng-messages="formularioForm.hijos.$error">
-                  <div ng-message="required">Este campo es requerido.</div>
-                  <div ng-message="max">Máximo 20 hijos</div>
-                  <div ng-message="min">Minimo 0 hijos.</div>
-                </div>
-              </md-input-container>       
-
-
-
-
-              <md-checkbox ng-model="data.cb1" ng-show="formulario.envio.edad > 50" aria-label="Checkbox 1">
-                ¿Te has realizado la mamografía?
-              </md-checkbox>
-
-              <md-button ng-click="guardarPerfil()" class="md-raised md-primary primaryAmate" ng-disabled="!formularioForm.$valid" style="    text-transform: initial;    margin-bottom: 20px; width: 80%; margin-left:10%;" >Guardar cambios</md-button>
-
-
-
-
-            </form>
-
-          </md-content>
+                        <md-input-container  class="col-md-6  col-xl-6 col-lg-6 col-sm-12" md-rowspan="3">
+                            <label>Teléfono fijo</label>
+                            <input type="text" required name="telefono" md-maxlength="7" ng-pattern="/^[0-9]*$/" ng-model="formulario.envio.telefono" ng-change='validar();validarTelefono()'>
+                            <div ng-messages="formularioForm.telefono.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="md-maxlength">Máximo 7 caracteres</div>
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="validationError">Minimo 7 digitos.</div>
+                            </div>
+                        </md-input-container>
 
 
+                        <md-input-container  class="col-md-6  col-xl-6 col-lg-6 col-sm-12" md-rowspan="3">
+                            <label>Celular</label>
+                            <input type="text" required name="celular" md-maxlength="10" ng-pattern="/^[0-9]*$/" ng-model="formulario.envio.celular" ng-change='validar();validarCelular()'>
+                            <div ng-messages="formularioForm.celular.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="md-maxlength">Máximo 10 caracteres</div>
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="validationError">Minimo 10 digitos.</div>
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container  class="col-md-6 col-xl-6 col-lg-6 col-sm-12" md-rowspan="3">
+                            <label>Dirección</label>
+                            <input type="text" required name="direccion" md-maxlength="80" ng-model="formulario.envio.direccion" ng-change='validar()'>
+                            <div ng-messages="formularioForm.direccion.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="md-maxlength">Máximo 80 caracteres</div>
+                            </div>
+                        </md-input-container>
 
 
-        </div>
+
+                        <md-input-container class="col-md-6 col-xl-6 col-lg-6 col-sm-12">
+                            <label>Barrio / residencia</label>
+                            <input type="text" required name="barrio" md-maxlength="50" ng-model="formulario.envio.barrio" ng-change='validar()'>
+                            <div ng-messages="formularioForm.barrio.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="md-maxlength">Máximo 50 caracteres</div>
+
+                            </div>
+                        </md-input-container>
+
+                        <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                            <label>Estatura (m)</label>
+                            <input type="number" required name="estatura" max="2.2" min="1.30" ng-model="formulario.envio.estatura" ng-change='validar()'>
+                            <div ng-messages="formularioForm.estatura.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="max">Máximo 2.2 m</div>
+                                <div ng-message="min">Minimo 1.30 m</div>
+                            </div>
+                        </md-input-container>
 
 
-      </div>   
+                        <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                            <label>Peso (Kg)</label>
+                            <input type="number" required name="peso" max="200"  min="30"  ng-model="formulario.envio.peso" ng-change='validar()'>
+                            <div ng-messages="formularioForm.peso.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="max">Máximo 200 kg</div>
+                                <div ng-message="min">Minimo 30kg.</div>
+                            </div>
+                        </md-input-container>
 
-    </md-dialog-content>
+
+                        <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                            <label>¿Cuántos hijos tienes?</label>
+                            <input type="number" required name="hijos" max="20" min="0" ng-model="formulario.envio.hijos" ng-change='validar()'>
+                            <div ng-messages="formularioForm.hijos.$error">
+                                <div ng-message="required">Este campo es requerido.</div>
+                                <div ng-message="max">Máximo 20 hijos</div>
+                                <div ng-message="min">Minimo 0 hijos.</div>
+                            </div>
+                        </md-input-container>       
+
+                        <h3>Ubicación</h3>
+
+                        <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                            <label>País</label>
+                            <md-select required ng-model="formulario.envio.pais" placeholder="País" class="col-sm-12 col-md-12 col-lg-12"
+                            ng-change="formulario.envio.ciudad='';formulario.envio.comuna='';formulario.envio.ese=''; formulario.envio.ips ">
+                            <md-option ng-repeat="pais in paises" ng-value="pais.id" >
+                                {{pais.nombre}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>   
 
 
-  </md-dialog>
+                    <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                        <label>Ciudad</label>
+                        <md-select required ng-model="formulario.envio.ciudad" placeholder="Ciudad" class="col-sm-12 col-md-12 col-lg-12"
+                        ng-change="formulario.envio.comuna='';formulario.envio.ese=''; formulario.envio.ips ">
+                        <md-option ng-repeat="ciudad in ubicacion[formulario.envio.pais].ciudades" ng-value="ciudad.id">
+                            {{ciudad.name}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>  
+
+
+                <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                    <label>Comuna</label>
+                    <md-select required ng-model="formulario.envio.comuna" placeholder="Comuna" class="col-sm-12 col-md-12 col-lg-12"
+                    ng-change="formulario.envio.ese=''; formulario.envio.ips ">
+                    <md-option ng-repeat="comuna in ubicacion[formulario.envio.pais].ciudades[formulario.envio.ciudad].comunas | orderBy: 'name' " ng-value="comuna.id">
+                        {{comuna.name}}
+                    </md-option>
+                </md-select>
+            </md-input-container>  
+
+
+            <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+                <label>E.S.E</label>
+                <md-select required ng-model="formulario.envio.ese" placeholder="E.S.E" class="col-sm-12 col-md-12 col-lg-12"
+                ng-change="formulario.envio.ips=''">
+                <md-option ng-repeat="ese in ubicacion[formulario.envio.pais].ciudades[formulario.envio.ciudad].ese" ng-value="ese.id">
+                    {{ese.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>  
+
+
+        <md-input-container class="col-sm-12 col-xl-6 col-md-6 col-lg-6">
+            <label>I.P.S</label>
+            <md-select ng-required="ubicacion[formulario.envio.pais].ciudades[formulario.envio.ciudad].ese[formulario.envio.ese].name !='OTROS' " ng-model="formulario.envio.ips" placeholder="Comuna" class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 60px;">
+                <md-option ng-repeat="ips in ubicacion[formulario.envio.pais].ciudades[formulario.envio.ciudad].ese[formulario.envio.ese].ips" ng-value="ips.id">
+                    {{ips.name}}
+                </md-option>
+            </md-select>
+        </md-input-container>  
+
+
+
+
+        <md-checkbox ng-model="data.cb1" ng-show="formulario.envio.edad > 50" aria-label="Checkbox 1">
+            ¿Te has realizado la mamografía?
+        </md-checkbox>
+
+        <md-button ng-click="guardarPerfil()" class="md-raised md-primary primaryAmate" ng-disabled="!formularioForm.$valid" style="    text-transform: initial;    margin-bottom: 20px; width: 80%; margin-left:10%;" >Guardar cambios</md-button>
+
+    </form>
+
+</md-content>
+
+
+
+
+</div>
+
+
+</div>   
+
+</md-dialog-content>
+
+
+</md-dialog>
 
 
 </md-content>

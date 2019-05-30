@@ -40,7 +40,12 @@
         .when('/puntos/reclamar', {
             templateUrl: "views/puntos/asignacion.html",
             controller: 'reclamarMainController',
-          
+
+        })
+        .when('/acerca', {
+            templateUrl: "views/web/acerca.html",
+            controller: 'webMainController',
+            controllerAs: 'web'
         })
         .when('/inicio', {
             templateUrl: "views/web/main.html",
@@ -85,16 +90,16 @@
 
 
                                     if((info.val().pointsBreast + info.val().pointsCervix ) > 50){
-                                        
+
                                     }else{
                                         $location.path("puntos");
-                                
+
                                     }
 
                                 }
                                 else{
                                     $location.path("puntos");
-                                  
+
                                 }
 
 
@@ -107,9 +112,9 @@
 
                         $location.path("login");
                         $scope.$apply();                       
-                   }
+                    }
 
-               });
+                });
 
 
 
@@ -121,7 +126,7 @@
 
 
 
-    app.controller('mainController', function($scope, $window, $route, $mdDialog, $mdMedia, $timeout, $location, $mdSidenav, $timeout, transacciones) {
+    app.controller('mainController', function($scope, $window, $route, $mdToast, $mdDialog, $mdMedia, $timeout, $location, $mdSidenav, $timeout, transacciones) {
 
 
     //     $(document).ready(function () {
@@ -136,16 +141,78 @@
     window.onresize = function(){ 
 
         if (window.matchMedia("(orientation: portrait)").matches) {
-   
+
         }
 
         if (window.matchMedia("(orientation: landscape)").matches) {
-                
+
         }
 
     } 
 
 
+    
+    var last = {
+        bottom: false,
+        top: true,
+        left: false,
+        right: true
+    };
+
+    $scope.toastPosition = angular.extend({},last);
+
+    $scope.getToastPosition = function() {
+        sanitizePosition();
+
+        return Object.keys($scope.toastPosition)
+        .filter(function(pos) {
+
+            return $scope.toastPosition[pos]; })
+        .join(' ');
+    };
+
+    function sanitizePosition() {
+        var current = $scope.toastPosition;
+
+        if ( current.bottom && last.top ) current.top = false;
+        if ( current.top && last.bottom ) current.bottom = false;
+        if ( current.right && last.left ) current.left = false;
+        if ( current.left && last.right ) current.right = false;
+
+        last = angular.extend({},current);
+    }
+
+
+
+    //centro de mensajes
+    $scope.mensajes = {};
+    $scope.mensajes.parentProperty = function(mensaje, textoBoton, duracion, target){
+
+        if(!textoBoton){
+            var textoBoton = "";
+        }
+
+        if(!duracion){
+            var duracion = 2000;
+        }
+
+        if(!target){
+            var target = '#toast-container';
+        }
+
+        var pinTo = $scope.getToastPosition();
+        var toast = $mdToast.simple().textContent(mensaje)
+        .action(textoBoton).highlightAction(true)
+        .hideDelay(duracion).position(pinTo)
+        .parent(document.querySelectorAll(target));
+
+        $mdToast.show(toast).then(function(response) {
+            if (response == 'Aceptar') {
+            }
+
+        });
+
+    }
 
     window.setInterval(function(){
         $scope.check();
@@ -221,7 +288,7 @@
 $scope.openMenu = function($mdOpenMenu, ev) {
 
     $scope.$on("$mdMenuClose", function() {
-    
+
     });
     originatorEv = ev;
     $mdOpenMenu(ev);
@@ -248,11 +315,11 @@ buildToggler();
 $scope.openNav = true;
 $scope.estado = function estado() {
     if ($scope.openNav == true) {
-       
+
         $scope.openNav = false;
         $("#cuerpo").removeClass("cuerpoWeb");
     } else {
-     
+
         $scope.openNav = true;
         $("#cuerpo").addClass("cuerpoWeb");
     }

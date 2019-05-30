@@ -18,12 +18,21 @@
 
 					<div style="text-align: center; margin:auto; display: inline-table; padding: 20px; background: rgba(255, 255, 255, 0.65); border-radius: 28px;" id="marcoPremio" class="">
 
+						<h2 class="mensajeFelicitaciones" ng-if="userInfo.cervixIndication == false && userInfo.breastIndication== true" style="    color: rgb(219, 39, 99);font-size: 20px;margin-bottom: 22px;">De acuerdo a tus respuestas, en este momento,TIENES INDICACIÓN de mamografía</h2>
+
+						<h2 class="mensajeFelicitaciones" ng-if="userInfo.cervixIndication == true && userInfo.breastIndication== false" style="    color: rgb(0, 152, 169);font-size: 20px;margin-bottom: 22px;">De acuerdo a tus respuestas, en este momento, TIENES INDICACIÓN de citología vaginal</h2>
+
+						<h2 class="mensajeFelicitaciones" ng-if="userInfo.cervixIndication == true && userInfo.breastIndication== true" style="    color: rgb(0, 152, 169);font-size: 20px;margin-bottom: 22px;">De acuerdo a tus respuestas, en este momento, TIENES INDICACIÓN de mamografía y citología vaginal</h2>
+
+
+						<h2 class="mensajeFelicitaciones" ng-if="userInfo.cervixIndication == false && userInfo.breastIndication== false" style="    color: rgb(219, 39, 99);font-size: 20px;margin-bottom: 22px;">De acuerdo a tus respuestas, en este momento,NO TIENES INDICACIÓN de mamografía ni de citología</h2>
+
 						<h2 style="width:100%; max-width:500px; margin:auto;font-size: 42px; color:#db2763 !important;">¡Felicitaciones!</h2>
 						<h2 class="mensajeFelicitaciones"> Ahora sabes lo importante que es hacerte la mamografía y la citología vaginal para detectar a tiempo el cáncer de seno y prevenir el cáncer de cuello uterino.</h2>
 
-						<div id="acompanamiento" class="noVisible">
+					<!-- 	<div id="acompanamiento" class="noVisible">
 
-						<h2 class="mensajeFelicitaciones" style="color:#db2763; font-size: 30px;">¿Deseas acompañamiento?</h2>
+							<h2 class="mensajeFelicitaciones" style="color:#db2763; font-size: 30px;">¿Deseas acompañamiento?</h2>
 
 							<h2 class="mensajeFelicitaciones"> De acuerdo a tus respuestas es tiempo de que te hagas el examen de {{mensaje}}. Te gustaría que te contactáramos para ayudarte a sacar tu cita y estar al día en el cuidado de tu salud?
 							</h2>
@@ -39,20 +48,68 @@
 								ng-click="contactar(false)"> No </md-button>
 
 							</div>
-
-
-							
-
+		
 						</div>
+ -->
+
+						<form name="formularioForm" ng-show="userInfo.breastIndication == true && userInfo.examGiftBreast!=true && userInfo.examGiftBreast!=false && (userInfo.failedTries < 3 || userInfo.failedTries == undefined)" style="box-shadow: 0px 5px 6px -3px rgba(2, 2, 2, 0.2), 0px 9px 12px 1px rgba(219, 39, 99, 0.32), 0px 3px 16px 2px rgba(219, 39, 99, 0.22); padding: 15px; margin-bottom: 22px;">
+
+							<md-input-container class="md-block" flex-gt-sm style="margin-bottom: 0px;">
+								<label style="text-align: left !important;">Ingresa el código para reclamar el premio por EXAMEN DE MAMOGRAFÍA</label>
+
+								<input name="codigob" ng-model="codigob" required placeholder="Ingresa un código en formato XXXX-XXXX-XXXX" ng-pattern="/[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}$/">
+
+								<div class="hint" ng-show="showHints">El código aceptado debe tener el formato XXXX-XXXX-XXXX</div>
+
+								<div ng-messages="formularioForm.codigob.$error">
+									<div ng-message="pattern">Código valido tiene formato XXXX-XXXX-XXXX.</div>
+									<div ng-message="required">El código es obligatorio.</div>
+								</div>
+							</md-input-container>
+
+							<md-button  ng-click="validarCodigo(1)" class="primaryAmate" ng-disabled="!(formularioForm.$valid) || inTransaction" >
+								Canjear código examen mamografía
+							</md-button>
+
+						</form>
+
+						<h2 class="mensajeFelicitaciones" ng-show="userInfo.siftingBreast==false && userInfo.examGiftBreast==true" style="    color: rgb(0, 152, 169);font-size: 20px;margin-bottom: 22px;">Premio de examen por Mamografía entregado</h2>
+
+						<h2 ng-show="userInfo.siftingCervix==false && userInfo.examGiftCervix==true" class="mensajeFelicitaciones" style="    color: rgb(0, 152, 169);font-size: 20px;margin-bottom: 22px;">Premio de examen por Citología entregado</h2>
+
+
+						<form ng-show="userInfo.cervixIndication == true && userInfo.examGiftCervix != true && userInfo.examGiftCervix!=false && 
+						(userInfo.failedTries < 3 || userInfo.failedTries == undefined)" name="formularioForm2" style="    box-shadow: 0px 5px 6px -3px rgba(2, 2, 2, 0.2), 0px 9px 12px 1px rgba(36, 128, 144, 0.51), 0px 3px 16px 2px rgba(37, 129, 145, 0.69); padding: 15px; margin-bottom: 22px;">
+
+							<md-input-container class="md-block" flex-gt-sm style="margin-bottom: 0px;">
+								<label style="text-align: left !important;">Ingresa el código para reclamar el premio por EXAMEN DE CITOLOGÍA</label>
+
+								<input name="codigoc" ng-model="codigoc" required placeholder="Ingresa un código en formato XXXX-XXXX-XXXX" ng-pattern="/[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}-[0-9a-zA-Z]{4}$/" />
+
+								<div class="hint" ng-show="showHints">El código aceptado debe tener el formato XXXX-XXXX-XXXX</div>
+
+								<div ng-messages="formularioForm2.codigoc.$error">
+									<div ng-message="pattern">Código valido tiene formato XXXX-XXXX-XXXX.</div>
+									<div ng-message="required">El código es obligatorio.</div>
+								</div>
+							</md-input-container>
+
+							<md-button  ng-click="validarCodigo(2)" class="oCervixPrimary" ng-disabled="!(formularioForm2.$valid) || inTransaction" >
+								Canjear código examen citología
+							</md-button>
+
+						</form>
+
+						<h3 ng-show="userInfo.examGiftCervix == false || userInfo.examGiftBreast== false" style="color:#db2763; font-size: 18px;">Estamos procesando la entrega de tu premio...</h3>
 						
-						<h3 class="mensajeFelicitaciones" style="color:#db2763; font-size: 18px;">En el transcurso del día llegará tu premio correspondiente a la recarga. ¡Muchas gracias por tu participación!</h3>
+						<h3 class="mensajeFelicitaciones noVisible" style="color:#db2763; font-size: 18px;">En el transcurso del día llegará tu premio correspondiente a la recarga. ¡Muchas gracias por tu participación!</h3>
 						
 
 						<div id="recomendaciones" class="noVisible">
 
-						<h2 class="mensajeFelicitaciones" style="text-align: left !important;"> Y recuerda siempre:</h2>
-						<h2 class="mensajeFelicitaciones" style="text-align: left !important;">1. Evitas el cáncer cuando controlas el consumo de licor, dejas de fumar y tienes sexo CON condón.</h2>
-						<h2 class="mensajeFelicitaciones" style="text-align: left !important;">2. Y la vacuna contra el virus del papiloma humano te protege contra el cáncer de cuello uterino.</h2>
+							<h2 class="mensajeFelicitaciones" style="text-align: left !important;"> Y recuerda siempre:</h2>
+							<h2 class="mensajeFelicitaciones" style="text-align: left !important;">1. Evitas el cáncer cuando controlas el consumo de licor, dejas de fumar y tienes sexo CON condón.</h2>
+							<h2 class="mensajeFelicitaciones" style="text-align: left !important;">2. Y la vacuna contra el virus del papiloma humano te protege contra el cáncer de cuello uterino.</h2>
 							
 						</div>	
 
@@ -70,7 +127,7 @@
 							<img class="visible imagenLogoWeb" src="img/logoAmateColor.png" style="width: 300px;">
 						</div>
 
-					
+
 						<h2 class="mensajeFelicitaciones">Muchas gracias por tu participación</h2>
 
 						<h2 class="mensajeFelicitaciones noVisible"  style="color:#db2763; font-size: 30px;">¡Tu recarga llegará en el transcurso del día!</h2>

@@ -116,7 +116,7 @@
 
   }
 
-   $scope.validarCelular= function(){
+  $scope.validarCelular= function(){
 
     if ($scope.formulario.envio.celular.length < 10) {
 
@@ -178,6 +178,60 @@
 
       $scope.nulo;
 
+      //ubicación
+
+      var llegada=  firebase.database().ref('paises'). once('value').then(function(paises) {
+
+        $scope.ubicacion = paises.val();
+
+        console.log($scope.ubicacion);
+
+        $scope.paises = [];
+        $scope.ciudades = {};
+
+        for(pais in $scope.ubicacion){
+
+          for(ciudad in $scope.ubicacion[pais].ciudades){
+              //convertimos el objeto en array
+
+              var temp = $scope.arrayquer($scope.ubicacion[pais].ciudades[ciudad].comunas);
+
+              
+              console.log("ordenado", temp);
+
+              var temp1 = temp.sort(function(a, b){
+               var nameA=a.name.toLowerCase(), nameB=b.name.toLowerCase();
+               if (nameA < nameB) 
+                return -1;
+              if (nameA > nameB)
+                return 1;
+              return 0; 
+            });
+              console.log("ordenado", temp1);
+
+              $scope.ubicacion[pais].ciudades[ciudad].comunas = temp       
+            }
+
+          }
+
+          if($scope.ubicacion != null){
+
+          //paises
+          for(pais in $scope.ubicacion){
+            $scope.paises.push( { id: parseInt(pais) , nombre: $scope.ubicacion[pais].name } );
+
+
+
+          }
+
+          console.log($scope.paises);
+
+        }
+
+        console.log($scope.ubicacion);
+
+      });
+
       var llegada=  firebase.database().ref('usuarios/'+user.uid). once('value').then(function(datos) {
 
         if(datos.val() == null){
@@ -204,30 +258,58 @@
          }
 
          if (datos.val().email) {
-         $scope.formulario.envio.email=datos.val().email;
+           $scope.formulario.envio.email=datos.val().email;
          }else{
           $scope.formulario.envio.email=user.email;
-         }
-         
-         $scope.formulario.envio.name  = datos.val().name;
-         $scope.formulario.envio.lastName  = datos.val().lastName;
-         $scope.formulario.envio.fechaNacimiento = mydate; 
-         $scope.formulario.envio.telefono = datos.val().phoneNumber;
-         if (datos.val().phoneNumberCel) {
+        }
+
+        $scope.formulario.envio.name  = datos.val().name;
+        $scope.formulario.envio.lastName  = datos.val().lastName;
+        $scope.formulario.envio.fechaNacimiento = mydate; 
+        $scope.formulario.envio.telefono = datos.val().phoneNumber;
+        if (datos.val().phoneNumberCel) {
           $scope.formulario.envio.celular = datos.val().phoneNumberCel;
-         }else{
+        }else{
           $scope.formulario.envio.celular = "";
-         }
-         $scope.formulario.envio.direccion = datos.val().address;
-         $scope.formulario.envio.barrio = datos.val().neighborhood;
-         $scope.formulario.envio.estatura = datos.val().height;
-         $scope.formulario.envio.peso = datos.val().weight;
-         $scope.formulario.envio.hijos = datos.val().hasChilds;
-       }
+        }
+        $scope.formulario.envio.direccion = datos.val().address;
+        $scope.formulario.envio.barrio = datos.val().neighborhood;
+        $scope.formulario.envio.estatura = datos.val().height;
+        $scope.formulario.envio.peso = datos.val().weight;
+        $scope.formulario.envio.hijos = datos.val().hasChilds;
 
-       $scope.$apply();
+        $scope.formulario.envio.pais = datos.val().pais
+        $scope.formulario.envio.ciudad = datos.val().ciudad
+        $scope.formulario.envio.comuna = datos.val().comuna
+        $scope.formulario.envio.ese = datos.val().ese
+        $scope.formulario.envio.ips  = datos.val().ips
 
-     });
+
+        //ubicacion[formulario.envio.pais].ciudades[formulario.envio.ciudad].comunas.sort(function(a,b) {return (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0);} )
+      }
+
+
+      $scope.$apply();
+
+    });
+
+      $scope.arrayquer = function (array) {
+        console.log(array);
+        var ary = [];
+        if(typeof array !== "undefined"){
+
+          angular.forEach(array, function (val, key) {
+            ary.push(val);
+          });
+        }
+        else{
+
+        }
+
+        
+        return ary;
+      };
+
 
 
 
@@ -240,10 +322,10 @@
         var dia=date.getDate();
         var ano=date.getFullYear();
 
-  
+
 
         if($scope.nulo==1){
-      
+
           firebase.database().ref('usuarios/' + user.uid).update({
             name: $scope.formulario.envio.name ,
             lastName: $scope.formulario.envio.lastName ,
@@ -265,12 +347,17 @@
             pointsCervix : 0,
             state: 0,
             repetitionsAnswersCervix : 0,
-            repetitionsAnswersBreast : 0
+            repetitionsAnswersBreast : 0,
+            pais: parseInt($scope.formulario.envio.pais),
+            ciudad : $scope.formulario.envio.ciudad,
+            comuna: $scope.formulario.envio.comuna,
+            ese: $scope.formulario.envio.ese,
+            ips: $scope.formulario.envio.ips
 
           });
 
         }else{
-        
+
          firebase.database().ref('usuarios/' + user.uid).update({
           name: $scope.formulario.envio.name,
           lastName: $scope.formulario.envio.lastName ,
@@ -284,6 +371,12 @@
           weight: $scope.formulario.envio.peso ,
           hasChilds: $scope.formulario.envio.hijos ,
           profileCompleted:1,
+
+          pais: parseInt($scope.formulario.envio.pais),
+          ciudad : $scope.formulario.envio.ciudad,
+          comuna: $scope.formulario.envio.comuna,
+          ese: $scope.formulario.envio.ese,
+          ips: $scope.formulario.envio.ips
 
         });
 
@@ -321,6 +414,6 @@
  });
 
 
-  })
+})
 
 })();

@@ -1,3 +1,9 @@
+
+.leftContainerAbout{
+	border-right: 3px dashed #db2763;
+	
+}
+
 md-sidenav{
 	width: 290px !important;
 	overflow-x:hidden !important; 
@@ -11,23 +17,96 @@ md-sidenav{
 	margin: 0px;
 }
 
+.socialNetwork{
+	padding: 0px 13px; font-size: 50px; font-size: 50px;
+}
 
-												
+.socialNetwork i:hover{
+	color:#237e8f !important;
+}
 
-												.btnPrimaryCervix{
-													background: #009997 !important;
-													color: white !important;
-												}
+@keyframes heartbeat {
+	0% {
+		transform: scale( .75);
+	}
+	20% {
+		transform: scale( 1);
+	}
+	40% {
+		transform: scale( .75);
+	}
+	60% {
+		transform: scale( 1);
+	}
+	80% {
+		transform: scale( .75);
+	}
+	100% {
+		transform: scale( .75);
+	}
+}
 
-												.btnDarkCervix{
-													background: #006d6b !important;
-													color: white !important;
-												}
+#heart {
+	position: relative;
+	width: 30px;
+	height: 20px;
+	animation: heartbeat 1s infinite;
+	margin-left: 17px;
+	margin-top: -4px;
+}
 
-												.btnLightCervix{
-													background: rgba(0, 153, 151, 0.59) !important;
-													color: white !important
-												}
+#heart:before,
+#heart:after {
+	position: absolute;
+	content: "";
+	left: 20px;
+	top: 0;
+	width: 20px;
+	height: 30px;
+	background: #db2763;
+	-moz-border-radius: 20px 20px 0 0;
+	border-radius: 20px 20px 0 0;
+	-webkit-transform: rotate(-45deg);
+	-moz-transform: rotate(-45deg);
+	-ms-transform: rotate(-45deg);
+	-o-transform: rotate(-45deg);
+	transform: rotate(-45deg);
+	-webkit-transform-origin: 0 100%;
+	-moz-transform-origin: 0 100%;
+	-ms-transform-origin: 0 100%;
+	-o-transform-origin: 0 100%;
+	transform-origin: 0 100%;
+}
+
+#heart:after {
+	left: 0;
+	-webkit-transform: rotate(45deg);
+	-moz-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	-ms-transform-origin: 100% 100%;
+	-o-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+}
+
+
+.btnPrimaryCervix{
+	background: #009997 !important;
+	color: white !important;
+}
+
+.btnDarkCervix{
+	background: #006d6b !important;
+	color: white !important;
+}
+
+.btnLightCervix{
+	background: rgba(0, 153, 151, 0.59) !important;
+	color: white !important
+}
 
 
 .contenedorTabla{
@@ -49,6 +128,7 @@ md-sidenav{
 	height: 100%;
 	display: table-cell;
 	vertical-align: middle;
+	overflow: auto;
 }
 
 .tableContenedor{
@@ -92,6 +172,8 @@ md-sidenav{
 		
 	}
 
+
+
 	.contenedorPuntos{
 
 		width: 100%;
@@ -118,6 +200,8 @@ md-sidenav{
 		width: 100% !important;
 	}
 
+
+
 }
 
 @media (min-width: 640px) {
@@ -127,6 +211,8 @@ md-sidenav{
 		height: 100%;
 		overflow-y: hidden;
 	}
+
+	
 
 	.table{
 		width: 80%;
@@ -1473,3 +1559,20 @@ md-sidenav{
 												.cervixPrimary{
 													color: #009997;
 												}
+
+
+												@media (max-width: 1000px) {
+
+													.leftContainerAbout{
+														border-bottom: 3px dashed #db2763;
+														border-right:0px;
+													}
+
+
+													@media (max-width: 1000px) {
+
+														.leftContainerAbout{
+															border-bottom: 3px dashed #db2763;
+															border-right:0px;
+														}
+

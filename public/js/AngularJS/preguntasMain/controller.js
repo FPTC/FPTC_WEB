@@ -1014,6 +1014,8 @@ $scope.seguir = function(){
 									document.getElementById("cargandoPreguntas").classList.remove("visible");
 									document.getElementById("cargandoPreguntas").classList.add("noVisible");
 
+									console.log(preguntasPorHacer);
+
 									if(preguntasPorHacer==0){
 										// document.getElementById("mensajePreguntas").classList.remove("visible");
 										// document.getElementById("mensajePreguntas").classList.add("noVisible");
@@ -1036,7 +1038,7 @@ $scope.seguir = function(){
 								
 
 
-
+									console.log($scope.contadorHabilitadas);
 									if($scope.contadorHabilitadas >= 0){
 
 								

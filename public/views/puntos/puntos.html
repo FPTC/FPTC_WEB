@@ -43,11 +43,11 @@
 
 							<div class="tablaDePuntos visible" style="width:100%; margin-left: 10%; margin-bottom: 10px;"  >
 								
-								<table class="table" style="margin-top: 40px;">
+								<table class="table" style="margin-top: 40px;font-size:16px;">
 									<thead style="    border: 1px solid #db2763;">
 										<tr>
-											<th style="width: 50%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">Puntos</th>
-											<th style="width: 50%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">Valor de recarga</th>
+											<th style="width: 20%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">Puntos</th>
+											<th style="width: 80%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">Nivel de conocimiento</th>
 										</tr>
 									</thead>
 									<tbody style="border: 1px solid grey;">
@@ -56,20 +56,20 @@
 										<tr class="" style="border-bottom: 1px solid black;" ng-repeat="regalo in regalosEnvio track by $index">
 
 											<td>{{regalo.valor}}</td>
-											<td>{{regalo.nombreRegalo}}</td>
+											<td style="text-align: left;font-size: 16px;"><h2 style="margin: 5px 0px;font-size: 16px;">{{regalo.titulo}}</h2>{{regalo.nombreRegalo}}</td>
 
 										</tr>								
 									</tbody>
 								</table>
 
-								<h4 class="notaPuntos">Adicionalmente, si tienes indicación de
-									hacerte la mamografía o citología vaginal y
-									cumples con la cita de tu examen, recibirás:</h4>
+								<h4 class="notaPuntos">¿Sabes si debes hacerte la mamografía o la citología vaginal? Nosotros te podemos ayudar.
+									Haz click en el botón y si tienes indicación de hacerte la mamografía o citología vaginal y cumples con la cita de tu
+									examen, recibirás:</h4>
 
 									<table class="table" style="margin-top: 40px;">
 										<thead style="    border: 1px solid #db2763;">
 											<tr>
-												<th style="width: 50%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;"> ¡Recarga por cuidar tu salud! </th>
+												<th style="background: #db2763;" class="tituloPuntos"> ¡Recarga por cuidar tu salud! </th>
 											</tr>
 										</thead>
 										<tbody style="border: 1px solid grey;">
@@ -78,7 +78,7 @@
 											<tr class="" style="border-bottom: 1px solid black;" >
 
 												<td>$5000</td>
-										
+												
 											</tr>								
 										</tbody>
 									</table>

@@ -5,9 +5,6 @@
 
 	.controller('webMainController' , function ($scope  , $mdDialog, $mdMedia, $location , registrarCliente, $firebaseAuth, $mdToast,  $timeout , $mdSidenav,transacciones ) {
 
-
-   
-
     var es=firebase.auth().onAuthStateChanged(function(user) {
 
       if(user){
