@@ -1,9 +1,8 @@
-			
-<div class="titulo" >
+<div class="titulo">
 	<h1 class="tituloPrincipal senoPrimary visible fadeIn">Premios y Puntos</h1>
 </div>
 
-<section style="background-color:white;height:calc(100vh); display: inherit; width: 100%;" >
+<section style="background-color:white;height:calc(100vh + 186px); display: inherit; width: 100%;">
 
 	<div ng-model="displayForm" id="cuerpoInicio" style="display: {{displayForm}}; width: 100%">
 
@@ -12,19 +11,24 @@
 			<div class="seccionCuerpo visible" style="height: 100%;">
 
 
-				<md-content md-theme="formulario" style=" background-color: white; overflow-x: hidden; height: 100%;background-image: url(img/puntaje-amate.jpg);background-size: 100% 100%;">
+				<md-content md-theme="formulario"
+					style=" background-color: white; overflow-x: hidden; height: 100%;background-image: url(img/puntaje-amate.jpg);background-size: 100% 100%;">
 
-					<div class="cuerpoAplicacion visible" style="display:inline; width:100% !important	;height: 100%;  margin-left:0px !important;">
-						
-						<div style="height: calc(100%);width: 100%;float: right;position: absolute;" class="imgBackground">
-							
-						</div>
-						
-						<div class="tablaPuntos"  style=" width: 50%;height: 100%;  float: right;display: table;position: absolute;margin-left: 50%; ">
+					<div class="cuerpoAplicacion visible"
+						style="display:inline; width:100% !important	;height: 100%;  margin-left:0px !important;">
 
-							<div class="contenedorTabla">
-								<div  class="contenedorPuntos" style="margin-top :20px !important;">
-									<!-- <h2 style="
+						<div class="row">
+							<div style="height: calc(100%);"
+								class="imgBackground col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+							</div>
+
+							<div class="tablaPuntos col-xs-12 col-sm-12 col-md-6 col-lg-6"
+								style="height: 100%;display: table;">
+
+								<div class="contenedorTabla">
+									<div class="contenedorPuntos" style="margin-top :20px !important;">
+										<!-- <h2 style="
 									color:white; width: calc(50% - 35px);text-align: right;margin-top: 0px;margin-bottom: 0px;padding: 22px; padding-right: 15px !important">Tienes</h2>
 									<div style="    width: 70px;background: white;height: 70px;margin-top: 15px;border-radius: 50%;padding: 7px;">
 										<h2 style="margin-top: 0px !important; color:#db2763;">{{puntos}}</h2>
@@ -35,71 +39,87 @@
 
 								-->
 
-								<h2 class="tituloPuntos">Puntos acumulados</h2>
+										<h2 class="tituloPuntos">Puntos acumulados</h2>
 
-								<h2 class="tituloPuntos">¡{{puntos}} Puntos!</h2>
+										<h2 class="tituloPuntos">¡{{puntos}} Puntos!</h2>
 
-							</div>
+									</div>
 
-							<div class="tablaDePuntos visible" style="width:100%; margin-left: 10%; margin-bottom: 10px;"  >
-								
-								<table class="table" style="margin-top: 40px;font-size:16px;">
-									<thead style="    border: 1px solid #db2763;">
-										<tr>
-											<th style="width: 20%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">Puntos</th>
-											<th style="width: 80%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">Nivel de conocimiento</th>
-										</tr>
-									</thead>
-									<tbody style="border: 1px solid grey;">
+									<div class="tablaDePuntos visible"
+										style="width:100%; margin-left: 10%; margin-bottom: 10px;">
 
-
-										<tr class="" style="border-bottom: 1px solid black;" ng-repeat="regalo in regalosEnvio track by $index">
-
-											<td>{{regalo.valor}}</td>
-											<td style="text-align: left;font-size: 16px;"><h2 style="margin: 5px 0px;font-size: 16px;">{{regalo.titulo}}</h2>{{regalo.nombreRegalo}}</td>
-
-										</tr>								
-									</tbody>
-								</table>
-
-								<h4 class="notaPuntos">¿Sabes si debes hacerte la mamografía o la citología vaginal? Nosotros te podemos ayudar.
-									Haz click en el botón y si tienes indicación de hacerte la mamografía o citología vaginal y cumples con la cita de tu
-									examen, recibirás:</h4>
-
-									<table class="table" style="margin-top: 40px;">
-										<thead style="    border: 1px solid #db2763;">
-											<tr>
-												<th style="background: #db2763;" class="tituloPuntos"> ¡Recarga por cuidar tu salud! </th>
-											</tr>
-										</thead>
-										<tbody style="border: 1px solid grey;">
+										<table class="table" style="margin-top: 40px;font-size:16px;">
+											<thead style="    border: 1px solid #db2763;">
+												<tr>
+													<th
+														style="width: 20%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">
+														Puntos</th>
+													<th
+														style="width: 80%;height: 70px; background-color: #db2763; color: white; font-family: Roboto;">
+														Nivel de conocimiento</th>
+												</tr>
+											</thead>
+											<tbody style="border: 1px solid grey;">
 
 
-											<tr class="" style="border-bottom: 1px solid black;" >
+												<tr class="" style="border-bottom: 1px solid black;"
+													ng-repeat="regalo in regalosEnvio track by $index">
 
-												<td>$5000</td>
-												
-											</tr>								
-										</tbody>
-									</table>
+													<td>{{regalo.valor}}</td>
+													<td style="text-align: left;font-size: 16px;">
+														<h2 style="margin: 5px 0px;font-size: 16px;">{{regalo.titulo}}
+														</h2>{{regalo.nombreRegalo}}
+													</td>
+
+												</tr>
+											</tbody>
+										</table>
+
+										<h4 class="notaPuntos">¿Sabes si debes hacerte la mamografía o la citología
+											vaginal? Nosotros te podemos ayudar.
+											Haz click en el botón y si tienes indicación de hacerte la mamografía o
+											citología vaginal y cumples con la cita de tu
+											examen, recibirás:</h4>
+
+										<table class="table" style="margin-top: 40px;">
+											<thead style="    border: 1px solid #db2763;">
+												<tr>
+													<th style="background: #db2763;" class="tituloPuntos"> ¡Recarga por
+														cuidar tu salud! </th>
+												</tr>
+											</thead>
+											<tbody style="border: 1px solid grey;">
+
+
+												<tr class="" style="border-bottom: 1px solid black;">
+
+													<td>$5000</td>
+
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+
+
+
+									<md-button class="md-primary btnPrimaryCervix" id="btnReclamar"
+										style="width: 50%; max-width: 250px; " ng-click="reclamar()"> Reclamar
+									</md-button>
 
 								</div>
 
 
 
-								<md-button  class="md-primary btnPrimaryCervix" id="btnReclamar" style="width: 50%; max-width: 250px; "
-								ng-click="reclamar()"> Reclamar </md-button>
+
+
+
+
 
 							</div>
 
-
-
-
-
-
-
-
 						</div>
+
 
 
 
@@ -109,9 +129,9 @@
 
 			</div>
 
-		</div> 
+		</div>
 
-	</div>  
+	</div>
 
 </section>
 <div class="foot" style="height: 45px; width: 100%; background-color: #ff6390; color: white;">

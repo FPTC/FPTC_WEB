@@ -241,7 +241,7 @@
 
         var respuesta =  $http({
             method: 'GET',
-            url: "https://us-central1-amate-b8ceb.cloudfunctions.net/consultarCodigos?c="+tmp+"&uid="+$scope.uid+"&t="+i ,
+            url: "https://us-central1-amate-b8ceb.cloudfunctions.net/consultarCodigosV2?c="+tmp+"&uid="+$scope.uid+"&t="+i ,
             headers: {
                 'Content-Type': 'application/json'
             },
